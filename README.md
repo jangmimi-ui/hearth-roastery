@@ -12,6 +12,7 @@
 |---|---|
 | `hearth-roastery/` | 홈페이지 (정적 HTML/CSS/JS) |
 | `sheet-template/` | 원두 목록 구글 시트 양식과 사용법 |
+| `apps-script/` | 납품 문의를 구글 시트에 저장하고 메일로 알리는 Apps Script와 배포 방법 |
 | `plan_coffee_roastery.md` | 기획서 |
 
 ## 로컬에서 보기
@@ -28,7 +29,7 @@ python -m http.server 8080 --directory hearth-roastery
 
 - `storeUrl`, `subscribeUrl`: 스마트스토어 주소
 - `beansSheetCsv`: 원두 목록 구글 시트 CSV 주소 (`sheet-template/사용법.md` 참고)
-- `formEndpoint`: 납품 문의 폼 접수 주소 (Formspree 등)
+- `formEndpoint`: 납품 문의 폼 접수 주소. 구글 Apps Script 웹 앱 주소(`apps-script/배포방법.md` 참고)
 - `biz`: 사업자 정보
 
 ## 사진

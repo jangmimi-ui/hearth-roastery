@@ -86,6 +86,12 @@
           <p class="lead reveal">남겨 주신 연락처로 확인 후 연락드리겠습니다.</p>
         </div>
         <form class="form reveal" id="inquiry-form" novalidate>
+          <!-- 스팸 방지: 사람에게는 보이지 않는 칸과 폼을 연 시각 -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">웹사이트</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="_t" id="f-started">
           <div class="field">
             <label for="f-company">상호명<span class="req">*</span></label>
             <input id="f-company" name="company" type="text" autocomplete="organization" required>
@@ -129,7 +135,7 @@
           </div>
           <label class="consent">
             <input type="checkbox" name="consent" required>
-            <span>(필수) 문의 응대를 위해 상호명, 담당자, 연락처, 이메일을 수집하며 문의 처리 후 1년간 보관합니다. <a href="privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></span>
+            <span>(필수) 문의 응대를 위해 상호명, 담당자, 연락처, 이메일을 수집하며 접수일로부터 1년간 보관합니다 (Google 스프레드시트에 저장). <a href="privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></span>
           </label>
           <div class="form-status" id="form-status" role="status"></div>
           <div class="form-actions">

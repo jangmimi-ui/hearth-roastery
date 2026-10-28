@@ -1,0 +1,3 @@
+# clasp: links this folder to the owner's Apps Script project (account-specific)
+apps-script/.clasp.json
+.clasprc.json

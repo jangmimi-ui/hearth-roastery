@@ -16,8 +16,9 @@
     // 구글 시트 > 파일 > 공유 > 웹에 게시 > CSV 주소 (비어 있으면 beans-data.js 사용)
     beansSheetCsv: "",
 
-    // B2B 문의 접수 주소 (Formspree 등). 비어 있으면 전송하지 않습니다
-    formEndpoint: "",
+    // B2B 문의 접수 주소: Apps Script 웹 앱 주소(.../exec). 비어 있으면 전송하지 않습니다
+    // 배포 방법은 저장소의 apps-script/배포방법.md 참고
+    formEndpoint: "https://script.google.com/macros/s/AKfycbx5gQueXi7wwCQXVI9oed9KSH8PO5eEYaYA_NPdA6HjYWIfmnixi1tVistwU97ydMPWqw/exec",
 
     // 정기구독 가격 (예시)
     subscription: { prices: { 200: 16000, 500: 36000 }, discount: 0.1 },
@@ -472,6 +473,18 @@
     var form = document.getElementById("inquiry-form");
     var status = document.getElementById("form-status");
     var btn = form.querySelector("button[type=submit]");
+    var started = document.getElementById("f-started");
+    var ERRORS = {
+      missing: "필수 항목을 모두 입력해 주세요.",
+      consent: "개인정보 수집에 동의해 주세요.",
+      phone: "연락처를 다시 확인해 주세요. 숫자 9~12자리여야 합니다.",
+      email: "이메일 주소 형식을 다시 확인해 주세요.",
+      type: "업종을 선택해 주세요.",
+      rate_limited: "방금 같은 연락처로 문의가 접수되었습니다. 1분 뒤에 다시 시도해 주세요."
+    };
+    // 폼을 연 시각: 너무 빨리 전송되는 자동 프로그램을 걸러냅니다
+    function stamp() { started.value = String(Date.now()); }
+    stamp();
 
     function show(kind, msg) {
       status.className = "form-status show " + kind;
@@ -487,15 +500,31 @@
       }
       btn.disabled = true;
       btn.textContent = "보내는 중…";
-      fetch(SITE.formEndpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+      // Apps Script가 e.parameter로 바로 읽을 수 있도록 urlencoded로 보냅니다
+      var ctrl = "AbortController" in window ? new AbortController() : null;
+      var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 20000);
+      fetch(SITE.formEndpoint, {
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
+        signal: ctrl ? ctrl.signal : undefined
+      })
         .then(function (r) {
           if (!r.ok) throw new Error("HTTP " + r.status);
-          form.reset();
-          show("ok", "문의가 접수되었습니다. 확인 후 남겨 주신 연락처로 연락드리겠습니다.");
+          return r.json();
+        })
+        .then(function (res) {
+          if (res && res.ok) {
+            form.reset();
+            stamp();
+            show("ok", "문의가 접수되었습니다. 확인 후 남겨 주신 연락처로 연락드리겠습니다.");
+          } else {
+            show("err", ERRORS[res && res.error] || "전송하지 못했습니다. 잠시 뒤 다시 시도하시거나 " + SITE.biz.email + "로 연락해 주세요.");
+          }
         })
         .catch(function () {
           show("err", "전송하지 못했습니다. 잠시 뒤 다시 시도하시거나 " + SITE.biz.email + "로 연락해 주세요.");
         })
+        .then(function () { clearTimeout(timer); })
         .then(function () {
           btn.disabled = false;
           btn.textContent = "문의 보내기";
