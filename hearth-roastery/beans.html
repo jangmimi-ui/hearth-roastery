@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>원두 — Hearth Roastery</title>
+  <meta name="description" content="주문 후 로스팅하는 싱글 오리진과 블렌드 원두. 산지, 가공 방식, 컵노트를 확인하고 골라 보세요.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/beans-data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="beans">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="headline reveal">원두.</h1>
+        <p class="lead reveal">모두 주문을 받은 뒤 볶습니다. 마음에 드는 맛을 골라 보세요.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container wide">
+        <div class="filters">
+          <div class="chips" role="group" aria-label="원두 종류">
+            <button type="button" class="chip" data-filter="all" aria-pressed="true">전체</button>
+            <button type="button" class="chip" data-filter="single" aria-pressed="false">싱글 오리진</button>
+            <button type="button" class="chip" data-filter="blend" aria-pressed="false">블렌드</button>
+          </div>
+          <select class="select" id="bean-sort" aria-label="정렬">
+            <option value="rec">추천순</option>
+            <option value="acid">산미 높은 순</option>
+            <option value="body">바디 묵직한 순</option>
+            <option value="price">가격 낮은 순</option>
+          </select>
+        </div>
+        <div class="bean-grid" id="bean-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="bean-dialog" id="bean-dialog" aria-labelledby="bean-dialog-title">
+    <button type="button" class="dialog-close" aria-label="닫기">×</button>
+    <div id="bean-dialog-content"></div>
+  </dialog>
+
+  <div id="site-footer"></div>
+</body>
+</html>

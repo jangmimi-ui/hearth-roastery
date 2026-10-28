@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hearth Roastery — 주문하면, 그때 볶습니다</title>
+  <meta name="description" content="주문 후 로스팅하여 48시간 이내 발송하는 로스터리. 원두 단품과 정기구독, 카페·사무실 납품.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/beans-data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main>
+    <!-- 히어로 -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow reveal">주문 후 로스팅</p>
+        <h1 class="headline reveal">주문하면,<br>그때 볶습니다.</h1>
+        <p class="lead reveal">미리 볶아 쌓아 두지 않습니다. 주문받은 원두만 소량씩 볶아<br class="pc">48시간 안에 보내 드립니다.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="beans.html">원두 둘러보기</a>
+          <a class="link" href="subscribe.html">정기구독 알아보기</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal" id="hero-visual" aria-label="대표 원두 봉투"></div>
+    </section>
+
+    <!-- 신선도 약속 -->
+    <section class="section dark">
+      <div class="container center">
+        <h2 class="h2 reveal">신선함에도<br>기준이 있어야 하니까.</h2>
+        <p class="lead reveal">원두 맛은 볶은 뒤부터 조금씩 달라집니다. 그래서 볶는 시점을 주문에 맞췄습니다.</p>
+        <div class="stats">
+          <div class="reveal"><div class="stat-num">0일</div><p class="stat-label">볶은 원두를 재고로 두는 기간</p></div>
+          <div class="reveal"><div class="stat-num">48h</div><p class="stat-label">로스팅부터 발송까지</p></div>
+          <div class="reveal"><div class="stat-num">200g</div><p class="stat-label">신선할 때 다 마시기 좋은 용량</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 대표 원두 -->
+    <section class="section alt">
+      <div class="container wide">
+        <div class="section-head">
+          <h2 class="h2 reveal">이번 시즌의 원두.</h2>
+          <p class="lead reveal">산지와 가공 방식, 맛까지 한눈에. 고르기 쉽게 정리했습니다.</p>
+        </div>
+        <div class="tile-grid" id="featured"></div>
+        <div class="cta-row reveal"><a class="link" href="beans.html">모든 원두 보기</a></div>
+      </div>
+    </section>
+
+    <!-- 산지 -->
+    <section class="section" style="padding-bottom:0">
+      <div class="container wide">
+        <div class="photo-band reveal">
+          <img src="https://images.unsplash.com/photo-1515694590185-73647ba02c10?w=1800&q=80&auto=format&fit=crop" alt="가지에 달린 붉고 푸른 커피 열매" loading="lazy">
+          <div class="photo-band-text">
+            <p class="eyebrow" style="color:#ffb47e">산지</p>
+            <h2 class="h2">커피는,<br>열매에서 시작됩니다.</h2>
+            <p class="lead">에티오피아의 고지대부터 브라질의 고원까지. 원두마다 자란 곳의 고도와 땅, 가공 방식을 함께 적어 두었습니다.</p>
+            <div class="cta-row" style="justify-content:flex-start"><a class="link" href="beans.html">산지별 원두 보기</a></div>
+          </div>
+        </div>
+        <!-- Unsplash 라이선스 사진. 실사 촬영 후 교체 예정 -->
+        <p class="photo-credit">사진: <a href="https://unsplash.com/photos/h28p96ICizo" target="_blank" rel="noopener">Clint McKoy</a> / Unsplash</p>
+      </div>
+    </section>
+
+    <!-- 정기구독 -->
+    <section class="section">
+      <div class="container wide">
+        <div class="promo reveal">
+          <div>
+            <p class="eyebrow">정기구독</p>
+            <h2 class="h2">떨어질 때쯤,<br>새 원두가 도착합니다.</h2>
+            <p class="lead">2주 또는 4주마다. 배송 직전에 볶은 원두를 할인된 가격으로 받아 보세요.</p>
+            <div class="cta-row">
+              <a class="btn btn-light" href="subscribe.html">구독 플랜 보기</a>
+              <a class="link" href="#" data-store="subscribe">스마트스토어에서 신청</a>
+            </div>
+          </div>
+          <div class="promo-visual" id="promo-visual" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 분쇄도 -->
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2 reveal">어떤 도구로 내려도,<br>맞는 굵기로.</h2>
+          <p class="lead reveal">주문할 때 추출 도구만 고르세요. 그에 맞게 갈아서 보내 드립니다.</p>
+        </div>
+        <div class="grind">
+          <div class="grind-item reveal"><div class="grind-icon" data-grind="whole"></div><p class="grind-name">홀빈</p><p class="grind-desc">직접 분쇄</p></div>
+          <div class="grind-item reveal"><div class="grind-icon" data-grind="drip"></div><p class="grind-name">핸드드립</p><p class="grind-desc">중간 굵기</p></div>
+          <div class="grind-item reveal"><div class="grind-icon" data-grind="espresso"></div><p class="grind-name">에스프레소</p><p class="grind-desc">아주 곱게</p></div>
+          <div class="grind-item reveal"><div class="grind-icon" data-grind="moka"></div><p class="grind-name">모카포트</p><p class="grind-desc">곱게</p></div>
+          <div class="grind-item reveal"><div class="grind-icon" data-grind="cold"></div><p class="grind-name">콜드브루</p><p class="grind-desc">굵게</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 이야기 · 납품 -->
+    <section class="section">
+      <div class="container wide">
+        <div class="tile-grid">
+          <article class="tile alt text-only reveal">
+            <p class="eyebrow">로스팅 이야기</p>
+            <h3 class="tile-title">불 앞에서<br>보내는 시간.</h3>
+            <p class="lead-sm">생두를 고르는 일부터 봉투를 닫는 순간까지.</p>
+            <div class="cta-row"><a class="link" href="story.html">더 알아보기</a></div>
+          </article>
+          <article class="tile dark text-only reveal">
+            <p class="eyebrow">카페·사무실 납품</p>
+            <h3 class="tile-title">매장의 커피도,<br>갓 볶은 원두로.</h3>
+            <p class="lead-sm">사용량과 메뉴에 맞춰 로스팅 일정을 함께 정합니다.</p>
+            <div class="cta-row"><a class="link" href="b2b.html">납품 문의하기</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

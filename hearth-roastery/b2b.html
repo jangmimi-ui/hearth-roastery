@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>납품 문의 — Hearth Roastery</title>
+  <meta name="description" content="카페와 사무실을 위한 원두 납품. 사용량과 메뉴에 맞춰 로스팅 일정을 함께 정합니다.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body data-page="b2b">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow reveal">카페·사무실 납품</p>
+        <h1 class="headline reveal">매장의 커피도,<br>갓 볶은 원두로.</h1>
+        <p class="lead reveal">사용량과 메뉴에 맞춰 로스팅 일정을 함께 정합니다.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="#inquiry">견적 문의하기</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container wide">
+        <div class="section-head">
+          <h2 class="h2 reveal">납품이 편해지는 이유.</h2>
+        </div>
+        <div class="benefits">
+          <div class="benefit reveal">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+            <h3>사용량에 맞춘 로스팅</h3>
+            <p>매장의 소비 속도에 맞춰 로스팅과 배송 일정을 정합니다. 원두가 오래 남지 않습니다.</p>
+          </div>
+          <div class="benefit reveal">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/><circle cx="12" cy="12" r="9"/></svg></div>
+            <h3>메뉴에 맞는 원두</h3>
+            <p>에스프레소, 라테, 핸드드립 등 주력 메뉴를 듣고 어울리는 원두를 함께 고릅니다.</p>
+          </div>
+          <div class="benefit reveal">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg></div>
+            <h3>먼저 맛보고 결정</h3>
+            <p>상담 후 샘플 원두로 먼저 맛을 확인하고 납품 여부를 정할 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container wide">
+        <div class="section-head">
+          <h2 class="h2 reveal">공급 품목.</h2>
+          <p class="lead reveal">가격은 사용량과 품목에 따라 상담 후 안내해 드립니다.</p>
+        </div>
+        <div class="supply reveal">
+          <div><strong>에스프레소 블렌드</strong><span>라테와 아메리카노용</span></div>
+          <div><strong>싱글 오리진</strong><span>핸드드립 메뉴용</span></div>
+          <div><strong>디카페인</strong><span>디카페인 메뉴용</span></div>
+          <div><strong>대용량 포장</strong><span>1kg 단위</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container wide">
+        <div class="section-head">
+          <h2 class="h2 reveal">진행 순서.</h2>
+        </div>
+        <ol class="process reveal">
+          <li><strong>문의</strong><span>아래 양식으로 매장 정보를 보내 주세요.</span></li>
+          <li><strong>상담·샘플</strong><span>메뉴와 사용량을 듣고 샘플을 준비합니다.</span></li>
+          <li><strong>견적·계약</strong><span>품목, 주기, 가격을 정합니다.</span></li>
+          <li><strong>정기 납품</strong><span>정한 일정에 맞춰 볶아 보냅니다.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="inquiry">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2 reveal">견적 문의.</h2>
+          <p class="lead reveal">남겨 주신 연락처로 확인 후 연락드리겠습니다.</p>
+        </div>
+        <form class="form reveal" id="inquiry-form" novalidate>
+          <div class="field">
+            <label for="f-company">상호명<span class="req">*</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="f-name">담당자<span class="req">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">연락처<span class="req">*</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="010-0000-0000" required>
+          </div>
+          <div class="field">
+            <label for="f-email">이메일</label>
+            <input id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="f-type">업종<span class="req">*</span></label>
+            <select id="f-type" name="type" required>
+              <option value="">선택해 주세요</option>
+              <option>카페</option>
+              <option>사무실</option>
+              <option>음식점·베이커리</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-volume">월 예상 사용량</label>
+            <select id="f-volume" name="volume">
+              <option value="">선택해 주세요</option>
+              <option>5kg 미만</option>
+              <option>5~20kg</option>
+              <option>20~50kg</option>
+              <option>50kg 이상</option>
+              <option>잘 모르겠음</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="f-message">문의 내용</label>
+            <textarea id="f-message" name="message" placeholder="주력 메뉴, 사용 중인 원두, 원하는 납품 주기 등을 적어 주세요."></textarea>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consent" required>
+            <span>(필수) 문의 응대를 위해 상호명, 담당자, 연락처, 이메일을 수집하며 문의 처리 후 1년간 보관합니다. <a href="privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></span>
+          </label>
+          <div class="form-status" id="form-status" role="status"></div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">문의 보내기</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
