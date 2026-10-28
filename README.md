@@ -35,3 +35,23 @@ python -m http.server 8080 --directory hearth-roastery
 ## 사진
 
 로스팅 이야기와 홈의 사진은 [Unsplash](https://unsplash.com/license) 라이선스 사진입니다. 작가는 각 페이지 하단에 표기했습니다. 오픈 전 실사 촬영으로 교체할 예정입니다.
+
+---
+
+# BRIDGE 사옥 브리핑 (50억~100억 중소기업 사옥 매수·매도)
+
+기업 고객에게 링크로 보내거나 미팅에서 띄워 설명하는 B2B 브리핑 자료형 사이트입니다. 기획서: `plan_office_briefing.md`
+
+> 매물·시장 수치·중개사무소 정보는 모두 **예시**입니다. 문의 폼은 화면만 있고 실제로 전송되지 않습니다.
+
+| 경로 | 내용 |
+|---|---|
+| `office-briefing/index.html` | 홈: 시장 개요, 매입 이유, 추천 브리핑, 거래 절차 |
+| `office-briefing/briefs.html` | 매물 목록, 필터, 최대 3건 비교표 |
+| `office-briefing/brief.html?id=GS-01` | 매물 브리핑 시트 (자금 계획·매입 vs 임차 계산기, 인쇄/PDF) |
+| `office-briefing/contact.html` | 매수 브리핑 요청 / 매도 의뢰 폼 |
+| `office-briefing/assets/js/data.js` | 매물·시장·사무소 정보 (이 파일만 고치면 내용 수정) |
+
+```bash
+python -m http.server 8081 --directory office-briefing
+```
