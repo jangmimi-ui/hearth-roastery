@@ -158,7 +158,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .stat-label { margin-top: 12px; font-size: 17px; color: var(--text-3); }
-@media (max-width: 640px) { .stats { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 640px) {
+  .stats { gap: 12px; margin-top: 40px; }
+  .stat-num { font-size: clamp(34px, 11vw, 44px); }
+  .stat-label { font-size: 13px; margin-top: 8px; }
+}
 
 /* ---------- 타일 ---------- */
 .tile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -177,7 +181,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .tile.text-only { min-height: 0; padding: 52px 32px 56px; justify-content: center; }
 @media (max-width: 760px) {
   .tile-grid { grid-template-columns: 1fr; }
-  .tile { min-height: 520px; }
+  .tile { min-height: 0; padding: 44px 24px 0; }
+  .tile-visual { margin-top: 36px; width: min(180px, 55%); }
+  .tile.text-only { padding: 44px 24px 48px; }
 }
 
 /* ---------- 홈: 구독 배너 ---------- */
@@ -225,8 +231,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .grind-icon svg { width: 64px; height: 64px; }
 .grind-name { font-size: 17px; font-weight: 600; }
 .grind-desc { font-size: 14px; color: var(--text-2); margin-top: 2px; }
-@media (max-width: 760px) { .grind { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 420px) { .grind { grid-template-columns: repeat(2, 1fr); } }
+/* 모바일: 3개 + 2개를 가운데 정렬 (마지막 줄에 하나만 남지 않도록) */
+@media (max-width: 760px) {
+  .grind { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px 8px; }
+  .grind-item { flex: 0 0 calc((100% - 16px) / 3); }
+  .grind-icon { width: 80px; height: 80px; margin-bottom: 12px; }
+  .grind-icon svg { width: 50px; height: 50px; }
+  .grind-desc { font-size: 13px; }
+}
 
 /* ---------- 원두 목록 ---------- */
 .filters { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 28px; }
@@ -263,6 +275,22 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .meter-bar i { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
 .meter-bar i.on { background: var(--accent); }
 .empty { grid-column: 1 / -1; text-align: center; padding: 60px 0; color: var(--text-2); }
+/* 모바일: 봉투 왼쪽, 정보 오른쪽인 가로형 카드 */
+@media (max-width: 560px) {
+  .bean-grid { gap: 12px; }
+  .bean-card {
+    display: grid; grid-template-columns: 84px 1fr; column-gap: 18px; align-items: start;
+    padding: 18px 18px 16px;
+  }
+  .bean-card > * { grid-column: 2; }
+  .bean-card .bean-card-visual { grid-column: 1; grid-row: 1 / span 5; width: 84px; margin: 0; align-self: center; }
+  .bean-card:hover { transform: none; }
+  .bean-name { font-size: 19px; }
+  .bean-meters { margin-top: 12px; }
+  .bean-foot { margin-top: 12px; }
+  .chip { min-height: 40px; }
+  .select { min-height: 40px; }
+}
 
 /* ---------- 원두 상세 팝업 ---------- */
 .bean-dialog {
@@ -294,11 +322,27 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .bean-story { margin: -6px 0 20px; padding: 16px 18px; border-radius: 14px; background: var(--bg-alt); font-size: 15px; line-height: 1.6; }
 .fresh { margin-top: 14px; font-size: 13px; color: var(--text-2); }
 .fresh::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #f0702d; margin-right: 8px; vertical-align: middle; }
+/* 모바일: 아래에서 올라오는 시트 + 구매 버튼 하단 고정 */
 @media (max-width: 760px) {
-  .dialog-body { grid-template-columns: 1fr; overflow-y: auto; }
-  .dialog-visual { padding: 36px; }
-  .dialog-visual > * { width: 140px; }
-  .dialog-info { padding: 28px 24px 32px; overflow: visible; }
+  .bean-dialog {
+    width: 100%; max-width: none; max-height: 92vh; margin: auto 0 0;
+    border-radius: 24px 24px 0 0;
+  }
+  .bean-dialog[open] { animation: sheet 0.45s var(--ease); }
+  @keyframes sheet { from { transform: translateY(100%); } to { transform: none; } }
+  .dialog-body { grid-template-columns: 1fr; max-height: 92vh; overflow-y: auto; overscroll-behavior: contain; }
+  .dialog-visual { padding: 28px; }
+  .dialog-visual > * { width: 112px; }
+  .dialog-info { display: flex; flex-direction: column; padding: 24px 24px 0; overflow: visible; }
+  .spec { margin: 22px 0; }
+  .dialog-buy {
+    order: 99; position: sticky; bottom: 0; z-index: 1; flex-wrap: nowrap;
+    margin: 20px -24px 0; padding: 14px 24px calc(14px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+  .dialog-buy .btn { flex: 1; padding: 0 16px; }
+  .price-lg { font-size: 22px; }
 }
 
 /* ---------- 정기구독 ---------- */
@@ -334,8 +378,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .summary-note { font-size: 13px; color: var(--text-2); margin-top: 6px; }
 @media (max-width: 760px) {
   .builder { grid-template-columns: 1fr; }
-  .builder-visual { position: static; min-height: 300px; padding: 36px; }
-  .builder-visual > * { width: 150px; }
+  .builder-visual { position: static; min-height: 220px; padding: 28px; }
+  .builder-visual > * { width: 120px; }
 }
 
 .faq { max-width: 820px; margin: 0 auto; }
@@ -438,6 +482,19 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .footer-biz { margin-top: 18px; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 10px; }
 @media (max-width: 640px) { .footer-cols { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- 모바일 공통 보정 ---------- */
+@media (max-width: 640px) {
+  .section { padding: 64px 0; }
+  .section-head { margin-bottom: 36px; }
+  .page-hero { padding: 44px 0 32px; }
+  .cta-row { margin-top: 24px; }
+  .step, .benefit { padding: 28px 24px; }
+  .summary .btn, .form-actions .btn { width: 100%; }
+  .gfooter { font-size: 13px; }
+  .footer-cols li { margin-bottom: 0; }
+  .footer-cols a { display: inline-block; padding: 6px 0; }
+}
 
 /* ---------- 알림 ---------- */
 .toast {
