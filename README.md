@@ -42,6 +42,15 @@ python -m http.server 8080 --directory hearth-roastery
 
 기업 고객에게 링크로 보내거나 미팅에서 띄워 설명하는 B2B 브리핑 자료형 사이트입니다. 기획서: `plan_office_briefing.md`
 
+**사이트:** https://office-briefing.vercel.app (GitHub `jangmimi-ui/office-briefing` → Vercel 자동 배포)
+
+배포 방법: 이 저장소에서 `office-briefing/`을 커밋한 뒤 아래 두 줄로 사이트 저장소에 올립니다.
+
+```bash
+git subtree split --prefix=office-briefing -b office-briefing-site
+git push https://github.com/jangmimi-ui/office-briefing.git office-briefing-site:main
+```
+
 > 매물·시장 수치·중개사무소 정보는 모두 **예시**입니다. 문의 폼은 화면만 있고 실제로 전송되지 않습니다.
 
 | 경로 | 내용 |
