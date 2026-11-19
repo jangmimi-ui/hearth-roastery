@@ -10,22 +10,23 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#d9cfbf}
 body{display:flex;justify-content:center;font-family:"Noto Sans KR","Malgun Gothic",sans-serif}
-.canvas{width:1080px;height:1350px;position:relative;overflow:hidden;
-  background:radial-gradient(90% 70% at 50% 62%,#fbf5ea 0%,#efe4d0 55%,#dccbb0 100%)}
+.canvas{width:1080px;height:1350px;position:relative;overflow:hidden;background:#2a2116}
+.bg{position:absolute;inset:-20px;background:url("photos/pexels-maria-13859226.jpg") center 40%/cover no-repeat;filter:blur(5px) brightness(.74) saturate(1.1)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,13,6,.72) 0%,rgba(20,13,6,.15) 26%,rgba(20,13,6,.05) 55%,rgba(20,13,6,.7) 76%,rgba(20,13,6,.88) 100%)}
 #gl{position:absolute;inset:0;width:1080px;height:1350px;display:block}
 .head{position:absolute;top:70px;left:0;right:0;text-align:center;pointer-events:none}
-.kicker{font-size:20px;letter-spacing:.32em;color:#a57f35;font-weight:700}
-h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:78px;margin:16px 0 8px;color:#3b2414}
-.sub{font-size:26px;color:#6f5e4f}
+.kicker{font-size:20px;letter-spacing:.32em;color:#e7c47a;font-weight:700}
+h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:78px;margin:16px 0 8px;color:#fff6e6;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.sub{font-size:26px;color:#f1e2c4}
 .names{position:absolute;top:1030px;left:110px;right:110px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;pointer-events:none}
-.names b{display:block;font-family:"Noto Serif KR",serif;font-size:30px;font-weight:700;color:#3b2414}
-.names span{font-size:19px;color:#7d6a57;letter-spacing:.04em}
-.names i{display:block;font-style:normal;font-size:17px;letter-spacing:.14em;color:#a57f35;font-weight:700;margin-bottom:2px}
-.scale{position:absolute;top:1178px;left:190px;right:190px;display:flex;align-items:center;gap:14px;font-size:17px;color:#7d6a57;pointer-events:none}
-.scale .bar{flex:1;height:12px;border-radius:8px;background:linear-gradient(90deg,#f0e2c6,#d1a573 50%,#9a6438)}
+.names b{display:block;font-family:"Noto Serif KR",serif;font-size:30px;font-weight:700;color:#fff6e6}
+.names span{font-size:19px;color:#e3d4bb;letter-spacing:.04em}
+.names i{display:block;font-style:normal;font-size:17px;letter-spacing:.14em;color:#e7c47a;font-weight:700;margin-bottom:2px}
+.scale{position:absolute;top:1178px;left:190px;right:190px;display:flex;align-items:center;gap:14px;font-size:17px;color:#e3d4bb;pointer-events:none}
+.scale .bar{flex:1;height:12px;border-radius:8px;background:linear-gradient(90deg,#f0e2c6,#d1a573 50%,#9a6438);box-shadow:0 0 0 1px rgba(255,246,230,.25)}
 .chips{position:absolute;bottom:78px;left:0;right:0;display:flex;justify-content:center;gap:16px;pointer-events:none}
-.chips span{border:1.5px solid rgba(165,127,53,.55);color:#5a3a22;padding:12px 26px;border-radius:40px;font-size:21px;background:rgba(255,250,242,.5)}
-.foot{position:absolute;bottom:34px;left:0;right:0;text-align:center;font-size:16px;color:#9a8670;letter-spacing:.04em;pointer-events:none}
+.chips span{border:1.5px solid rgba(231,196,122,.6);color:#fff6e6;padding:12px 26px;border-radius:40px;font-size:21px;background:rgba(30,20,10,.35)}
+.foot{position:absolute;bottom:34px;left:0;right:0;text-align:center;font-size:16px;color:rgba(227,212,187,.75);letter-spacing:.04em;pointer-events:none}
 </style>
 <script type="importmap">
 {"imports":{
@@ -36,6 +37,7 @@ h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:78px;margin:16px 
 </head>
 <body>
 <div class="canvas">
+  <div class="bg"></div><div class="shade"></div>
   <canvas id="gl"></canvas>
   <div class="head">
     <div class="kicker">GWANGDEOK 1290 · GOODS</div>
@@ -49,7 +51,7 @@ h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:78px;margin:16px 
   </div>
   <div class="scale"><span>호두 오일 6%</span><div class="bar"></div><span>12%</span></div>
   <div class="chips"><span>광덕 호두 오일</span><span>함량은 색으로</span><span>호두의 성분을 통째로 담았습니다.</span></div>
-  <div class="foot">25g × 3 · 3D 디자인 시안이며 실제 제품과 다를 수 있습니다</div>
+  <div class="foot">25g × 3 · 3D 디자인 시안이며 실제 제품과 다를 수 있습니다 · Background photo: Maria / Pexels</div>
 </div>
 
 <script type="module">
@@ -161,7 +163,7 @@ scene.add(key);
 const rim = new THREE.DirectionalLight(0xffe2b8, 1.1); rim.position.set(5, 3, -4); scene.add(rim);
 scene.add(new THREE.HemisphereLight(0xfff8ee, 0xb89a72, 0.5));
 
-const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.2 }));
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.45 }));
 ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 
 const nuts = [
