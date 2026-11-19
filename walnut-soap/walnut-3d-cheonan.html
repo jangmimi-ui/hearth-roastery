@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Walnut Soap Cheonan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#d9cfbf}
+body{display:flex;justify-content:center;font-family:"EB Garamond","Noto Serif KR",serif;font-variant-numeric:lining-nums}
+.canvas{width:1080px;height:1350px;position:relative;overflow:hidden;background:#1d2418}
+/* 광덕산 사진의 숲 부분만 크게 확대해 은은하게 흐림 */
+.bg{position:absolute;inset:-30px;background:url("photos/gwangdeoksan-view.jpg") 2% 92%/auto 230% no-repeat;filter:blur(7px) brightness(.8) saturate(.9)}
+.mist{position:absolute;inset:0;background:radial-gradient(ellipse 70% 22% at 50% 29%,rgba(214,222,206,.42),rgba(214,222,206,0) 70%)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,12,.8) 0%,rgba(14,20,12,.35) 20%,rgba(14,20,12,.05) 38%,rgba(14,20,12,0) 46%,rgba(20,16,8,.5) 64%,rgba(20,14,6,.86) 76%,rgba(18,12,5,.95) 100%)}
+#gl{position:absolute;inset:0;width:1080px;height:1350px;display:block}
+.fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,12,5,0) 67%,rgba(18,12,5,.72) 77%,rgba(18,12,5,.9) 88%,rgba(18,12,5,.96) 100%);pointer-events:none}
+.head{position:absolute;top:62px;left:0;right:0;text-align:center;pointer-events:none}
+.kicker{font-family:"Cormorant Garamond",serif;font-size:21px;letter-spacing:.42em;color:#e7c47a;font-weight:700}
+h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:104px;line-height:1;margin:14px 0 14px;color:#fff6e6;letter-spacing:.005em;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+h1 em{font-style:italic;font-weight:500;color:#e7c47a}
+.stop{display:inline-flex;align-items:center;gap:18px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:31px;color:#fff1d8}
+.stop:before,.stop:after{content:"";width:64px;height:1px;background:rgba(231,196,122,.75)}
+.stop b{font-style:normal;font-weight:700;letter-spacing:.12em;font-size:25px;color:#e7c47a}
+.ko{margin-top:8px;font-family:"Noto Serif KR",serif;font-weight:500;font-size:19px;color:#e9dcc4;letter-spacing:.04em}
+.names{position:absolute;top:1028px;left:110px;right:110px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;pointer-events:none}
+.names b{display:block;font-family:"Cormorant Garamond",serif;font-size:44px;line-height:1.05;font-weight:600;font-style:italic;color:#fff6e6}
+.names span{font-size:20px;font-style:italic;color:#e3d4bb;letter-spacing:.02em}
+.names i{display:block;font-style:normal;font-family:"Cormorant Garamond",serif;font-size:18px;letter-spacing:.2em;color:#e7c47a;font-weight:700;margin-bottom:2px}
+.scale{position:absolute;top:1180px;left:190px;right:190px;display:flex;align-items:center;gap:14px;font-size:19px;font-style:italic;color:#e3d4bb;pointer-events:none}
+.scale .bar{flex:1;height:10px;border-radius:8px;background:linear-gradient(90deg,#f0e2c6,#d1a573 50%,#9a6438);box-shadow:0 0 0 1px rgba(255,246,230,.25)}
+.chips{position:absolute;bottom:80px;left:0;right:0;display:flex;justify-content:center;gap:16px;pointer-events:none}
+.chips span{border:1px solid rgba(231,196,122,.65);color:#fff6e6;padding:9px 26px 10px;border-radius:40px;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:23px;letter-spacing:.03em;background:rgba(30,20,10,.35)}
+.lnm{position:absolute;top:22px;right:30px;font-family:"Cormorant Garamond",serif;font-size:16px;letter-spacing:.22em;color:rgba(231,196,122,.9);font-weight:700;pointer-events:none}
+.lnm b{color:#fff6e6;letter-spacing:.12em}
+html[lang=ko] .lnm{font-family:"Noto Serif KR",serif;font-size:14px;letter-spacing:.12em}
+.foot{position:absolute;bottom:30px;left:0;right:0;text-align:center;font-size:15px;font-style:italic;color:rgba(227,212,187,.75);letter-spacing:.03em;pointer-events:none}
+/* 한글판: 모든 글씨를 명조체로 */
+html[lang=ko] .kicker,html[lang=ko] h1,html[lang=ko] .stop,html[lang=ko] .names b,html[lang=ko] .names i,html[lang=ko] .chips span,html[lang=ko] body{font-family:"Noto Serif KR",serif}
+html[lang=ko] .kicker{font-size:19px;letter-spacing:.36em}
+html[lang=ko] h1{font-size:84px;font-weight:900;letter-spacing:-.01em;margin:18px 0 18px}
+html[lang=ko] h1 em{font-style:normal;font-weight:900}
+html[lang=ko] .stop{font-style:normal;font-size:24px;font-weight:500}
+html[lang=ko] .stop b{font-size:26px;letter-spacing:.1em;font-weight:900}
+html[lang=ko] .names b{font-style:normal;font-size:32px;font-weight:700;margin:2px 0 4px}
+html[lang=ko] .names i{font-size:16px;letter-spacing:.12em}
+html[lang=ko] .names span,html[lang=ko] .scale,html[lang=ko] .foot{font-style:normal}
+html[lang=ko] .names span{font-size:18px}
+html[lang=ko] .scale{font-size:17px}
+html[lang=ko] .chips span{font-size:20px;font-weight:500;padding:11px 26px 12px}
+html[lang=ko] .foot{font-size:14px}
+</style>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg"></div><div class="mist"></div><div class="shade"></div>
+  <canvas id="gl"></canvas><div class="fade"></div>
+  <div class="lnm" data-ko="제안 · &lt;b&gt;LNM Solution&lt;/b&gt;">PROPOSED BY <b>LNM SOLUTION</b></div>
+  <div class="head">
+    <div class="kicker" data-ko="광덕 1290 · 호두 굿즈">GWANGDEOK 1290 · WALNUT GOODS</div>
+    <h1 data-ko="&lt;em&gt;천안&lt;/em&gt;의 호두 비누">walnut soap <em>by Cheon An</em></h1>
+    <div class="stop" data-ko="다음 역 &lt;b&gt;천안역&lt;/b&gt;">Next stop <b>CHEONAN STATION</b></div>
+    <p class="ko">호두의 성분을 통째로 담았습니다.</p>
+  </div>
+  <div class="names">
+    <div data-ko="&lt;i&gt;호두 오일 6%&lt;/i&gt;&lt;b&gt;라이트&lt;/b&gt;&lt;span&gt;가볍고 순한 세안용&lt;/span&gt;"><i>WALNUT OIL 6%</i><b>Light</b><span>gentle face bar</span></div>
+    <div data-ko="&lt;i&gt;호두 오일 9%&lt;/i&gt;&lt;b&gt;베이직&lt;/b&gt;&lt;span&gt;얼굴·바디 겸용 대표&lt;/span&gt;"><i>WALNUT OIL 9%</i><b>Basic</b><span>face &amp; body</span></div>
+    <div data-ko="&lt;i&gt;호두 오일 12%&lt;/i&gt;&lt;b&gt;리치&lt;/b&gt;&lt;span&gt;촉촉한 바디용&lt;/span&gt;"><i>WALNUT OIL 12%</i><b>Rich</b><span>nourishing body bar</span></div>
+  </div>
+  <div class="scale"><span data-ko="호두 오일 6%">Walnut oil 6%</span><div class="bar"></div><span>12%</span></div>
+  <div class="chips"><span data-ko="광덕 호두 오일">Gwangdeok Walnut Oil</span><span data-ko="함량은 색으로">Strength by Shade</span><span data-ko="광덕산 숲에서 천안역까지">The Whole Walnut, in a Bar</span></div>
+  <div class="foot" data-ko="25g × 3 · 3D 디자인 시안이며 실제 제품과 다를 수 있습니다 · 배경 사진: Kapil Arjun / Wikimedia Commons, CC BY-SA 3.0 · 제안 LNM Solution">25 g × 3 · 3D design concept, final product may differ · Background photo: Kapil Arjun / Wikimedia Commons, CC BY-SA 3.0 · LNM Solution</div>
+</div>
+<script>
+/* ?lang=ko 이면 한글판: data-ko 문구로 바꿈 */
+if (new URLSearchParams(location.search).get("lang") === "ko") {
+  document.documentElement.lang = "ko"; document.title = "천안 호두 비누 포스터";
+  document.querySelectorAll("[data-ko]").forEach(el => { el.innerHTML = el.dataset.ko; });
+}
+</script>
+
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+/* ---------- 3D 펄린 노이즈 ---------- */
+const P = new Uint8Array(512);
+{ const p = [...Array(256).keys()]; let s = 1290;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [p[i], p[j]] = [p[j], p[i]]; }
+  for (let i = 0; i < 512; i++) P[i] = p[i & 255]; }
+const fade = t => t * t * t * (t * (t * 6 - 15) + 10);
+const lerp = (a, b, t) => a + (b - a) * t;
+function grad(h, x, y, z) { const u = h < 8 ? x : y, v = h < 4 ? y : (h === 12 || h === 14 ? x : z);
+  return ((h & 1) ? -u : u) + ((h & 2) ? -v : v); }
+function noise(x, y, z) {
+  const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+  x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+  const u = fade(x), v = fade(y), w = fade(z);
+  const A = P[X] + Y, AA = P[A] + Z, AB = P[A + 1] + Z, B = P[X + 1] + Y, BA = P[B] + Z, BB = P[B + 1] + Z;
+  return lerp(lerp(lerp(grad(P[AA] & 15, x, y, z), grad(P[BA] & 15, x - 1, y, z), u),
+                   lerp(grad(P[AB] & 15, x, y - 1, z), grad(P[BB] & 15, x - 1, y - 1, z), u), v),
+              lerp(lerp(grad(P[AA + 1] & 15, x, y, z - 1), grad(P[BA + 1] & 15, x - 1, y, z - 1), u),
+                   lerp(grad(P[AB + 1] & 15, x, y - 1, z - 1), grad(P[BB + 1] & 15, x - 1, y - 1, z - 1), u), v), w);
+}
+const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+/* ---------- 호두 형태 만들기 ---------- */
+function makeWalnut(seed, base, groove, flecks, fth = 0.42) {
+  const geo = new THREE.SphereGeometry(1, 400, 300);
+  const pos = geo.attributes.position, n = pos.count;
+  const col = new Float32Array(n * 3);
+  const cBase = new THREE.Color(base), cGroove = new THREE.Color(groove), cFleck = new THREE.Color(flecks || base), c = new THREE.Color();
+  const v = new THREE.Vector3();
+  for (let i = 0; i < n; i++) {
+    v.fromBufferAttribute(pos, i);              // 단위 구 위의 점 (= 법선)
+    const nx = v.x, ny = v.y, nz = v.z;
+    // 기본 호두 비율: 세로로 길고, 이음선 방향(x)으로 살짝 넓음
+    let sx = 0.92, sy = 1.08, sz = 0.86;
+    // 아래 끝은 뾰족하게, 위는 살짝 납작하게
+    const tip = smooth(0.45, 1.0, -ny);
+    const k = 1 - 0.42 * Math.pow(tip, 1.6);
+    const top = smooth(0.7, 1.0, ny);
+    let x = nx * sx * k, y = ny * sy * (1 - 0.06 * top) - 0.04 * tip, z = nz * sz * k;
+
+    // 가운데 이음선 (x=0 평면): 솟은 능선 + 양옆 홈
+    const ax = Math.abs(nx);
+    const ridge = 0.036 * Math.exp(-Math.pow(ax / 0.034, 2));
+    const seamGroove = -0.04 * Math.exp(-Math.pow((ax - 0.075) / 0.035, 2));
+    // 깊은 주름: 세로로 길쭉한 능선형 노이즈
+    const q = 3.4, o = seed * 7.3;
+    let w = noise(nx * q + o, ny * q * 0.55, nz * q) + 0.45 * noise(nx * q * 2.1 + o, ny * q * 1.1 + 3, nz * q * 2.1);
+    const g = Math.pow(1 - smooth(0.0, 0.2, Math.abs(w)), 1.4);          // 1 = 주름 골
+    const nearSeam = smooth(0.06, 0.16, ax);                // 이음선 근처는 매끈하게
+    const tipFade = 1 - 0.6 * tip;
+    const wr = -0.062 * g * nearSeam * tipFade;
+    const bump = 0.004 * noise(nx * 5 + o, ny * 5, nz * 5) * nearSeam + 0.022 * nearSeam * (0.4 + 0.6 * smooth(-0.15, 0.15, w)) * tipFade;
+    const d = ridge + seamGroove + wr + bump;
+    pos.setXYZ(i, x + nx * d, y + ny * d, z + nz * d);
+
+    // 색: 주름 골은 어둡게, 능선은 밝게
+    const shade = Math.min(1, g * nearSeam * 1.1 + Math.max(0, -seamGroove) * 12);
+    c.copy(cBase).lerp(cGroove, shade * 0.5);
+    if (ridge > 0.02) c.offsetHSL(0, -0.02, 0.06 * (ridge / 0.036));
+    // 점무늬 (오리진: 호두 껍질 분말)
+    if (flecks) { const f = noise(nx * 38 + o, ny * 38, nz * 38); if (f > fth) c.lerp(cFleck, Math.min(1, (f - fth) * 6)); }
+    col.set([c.r, c.g, c.b], i * 3);
+  }
+  geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+  geo.computeVertexNormals();
+  const mat = new THREE.MeshPhysicalMaterial({
+    // 비누: 매끈한 몰드 표면 + 왁스 같은 광택 + 살짝 비치는 반투명감
+    vertexColors: true, roughness: 0.3, metalness: 0,
+    clearcoat: 0.75, clearcoatRoughness: 0.18,
+    transmission: 0.12, thickness: 1.2, ior: 1.45,
+    attenuationColor: new THREE.Color(base), attenuationDistance: 1.5
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.castShadow = true; mesh.receiveShadow = true;
+  return mesh;
+}
+
+/* ---------- 장면 ---------- */
+const canvas = document.getElementById("gl");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+renderer.setSize(1080, 1350, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene = new THREE.Scene();
+const FOG_COLOR = 0x6b7862;
+const pm = new THREE.PMREMGenerator(renderer);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(30, 1080 / 1350, 0.1, 400);
+camera.position.set(0, 3.45, 15.2);
+camera.setViewOffset(1080, 1350, 0, -60, 1080, 1350);
+
+/* 먼 기찻길이 숲 안개 속으로 사라지게 (배경 색과 맞춤) */
+scene.fog = new THREE.Fog(FOG_COLOR, 16, 78);
+
+const key = new THREE.DirectionalLight(0xfff1dc, 2.4);
+key.position.set(-4, 7, 4); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 8; key.shadow.bias = -0.0004;
+Object.assign(key.shadow.camera, { left: -5, right: 5, top: 6, bottom: -6, near: 1, far: 22 });
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xffe2b8, 1.1); rim.position.set(5, 3, -4); scene.add(rim);
+scene.add(new THREE.HemisphereLight(0xfff8ee, 0xb89a72, 0.5));
+
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.45 }));
+ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+/* ---------- 곡선 기찻길 (폭 1/3): 베이직 비누 아래에서 시작해 오른쪽으로 휘며 멀어짐 ---------- */
+const TRACK_START = 1.35;                       // 베이직 비누가 놓인 z
+const curveX = d => d <= 0 ? 0 : 2.3 * Math.sin(d / 9) * Math.exp(-((d / 34) ** 2));   // d: 비누 뒤로 간 거리. 오른쪽으로 크게 한 번 휘었다가 돌아와 멀리 사라짐
+const D0 = -8, D1 = 140, STEP = 0.05;
+// 길을 따라 촘촘히 점을 찍어 놓고(위치·방향), 길이 기준으로 침목·레일을 배치
+const pts = [];
+{ let len = 0, prev = null;
+  for (let d = D0; d <= D1; d += STEP) {
+    const p = new THREE.Vector3(curveX(d), 0, TRACK_START - d);
+    if (prev) len += p.distanceTo(prev);
+    const t = new THREE.Vector3(curveX(d + 0.01) - curveX(d - 0.01), 0, -0.02).normalize();
+    pts.push({ p, t, len }); prev = p;
+  } }
+const total = pts[pts.length - 1].len;
+function at(s) {                                // 길이 s 위치의 점과 방향
+  let lo = 0, hi = pts.length - 1;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; (pts[m].len < s ? lo = m : hi = m); }
+  return pts[lo];
+}
+const GAUGE = 0.26, SLEEPER_W = 0.78, SLEEPER_TOP = 0.045, SLEEPER_GAP = 0.2;
+{ // 자갈 바닥: 길을 따라가는 띠 (양옆은 부드럽게 사라짐)
+  const c = document.createElement("canvas"); c.width = 128; c.height = 512;
+  const g = c.getContext("2d"); let s = 7;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  g.fillStyle = "#6f665b"; g.fillRect(0, 0, 128, 512);
+  for (let i = 0; i < 6000; i++) { const v = 70 + r() * 90 | 0; g.fillStyle = `rgb(${v + 8},${v + 2},${v - 6})`; g.fillRect(r() * 128, r() * 512, 1 + r() * 2, 1 + r() * 2); }
+  const fc = document.createElement("canvas"); fc.width = 128; fc.height = 4;
+  const fg = fc.getContext("2d"); const gr = fg.createLinearGradient(0, 0, 128, 0);
+  gr.addColorStop(0, "#000"); gr.addColorStop(.22, "#fff"); gr.addColorStop(.78, "#fff"); gr.addColorStop(1, "#000");
+  fg.fillStyle = gr; fg.fillRect(0, 0, 128, 4);
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  const W = 1.25, pos = [], uv = [], idx = [];
+  for (let s = 0, i = 0; s <= total; s += 0.25, i++) {
+    const { p, t } = at(s); const nx = -t.z, nz = t.x;      // 길에 수직인 방향
+    pos.push(p.x - nx * W / 2, 0.003, p.z - nz * W / 2, p.x + nx * W / 2, 0.003, p.z + nz * W / 2);
+    uv.push(0, s / 3, 1, s / 3);
+    if (i) { const a = (i - 1) * 2; idx.push(a, a + 2, a + 1, a + 1, a + 2, a + 3); }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  geo.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
+  geo.setIndex(idx); geo.computeVertexNormals();
+  const bal = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: tex, alphaMap: new THREE.CanvasTexture(fc), transparent: true, roughness: 1, depthWrite: false, side: THREE.DoubleSide }));
+  bal.receiveShadow = true; scene.add(bal);
+}
+{ // 나무 침목 + 레일(받침·몸통·반짝이는 윗면)을 길이 방향 조각으로 이어 붙임
+  const n = Math.floor(total / SLEEPER_GAP), SEG = 0.12, m = Math.floor(total / SEG);
+  const sleeper = new THREE.InstancedMesh(new THREE.BoxGeometry(SLEEPER_W, SLEEPER_TOP, 0.085),
+    new THREE.MeshStandardMaterial({ color: 0x5b4532, roughness: 0.92 }), n);
+  const steel = new THREE.MeshStandardMaterial({ color: 0x6d6862, metalness: 0.85, roughness: 0.45 });
+  const shine = new THREE.MeshStandardMaterial({ color: 0xd9d4cc, metalness: 1, roughness: 0.22 });
+  const parts = [
+    { geo: new THREE.BoxGeometry(0.06, 0.01, SEG * 1.08), mat: steel, y: SLEEPER_TOP + 0.005 },
+    { geo: new THREE.BoxGeometry(0.018, 0.03, SEG * 1.08), mat: steel, y: SLEEPER_TOP + 0.025 },
+    { geo: new THREE.BoxGeometry(0.034, 0.015, SEG * 1.08), mat: shine, y: SLEEPER_TOP + 0.047 }
+  ].map(o => ({ ...o, mesh: new THREE.InstancedMesh(o.geo, o.mat, m * 2) }));
+  const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), S1 = new THREE.Vector3(1, 1, 1), up = new THREE.Vector3(0, 1, 0);
+  const place = (mesh, i, s, off, y) => {
+    const { p, t } = at(s); const ang = Math.atan2(t.x, t.z);
+    Q.setFromAxisAngle(up, ang);
+    const v = new THREE.Vector3(p.x + t.z * off, y, p.z - t.x * off);
+    mesh.setMatrixAt(i, M.compose(v, Q, S1));
+  };
+  for (let i = 0; i < n; i++) place(sleeper, i, i * SLEEPER_GAP, 0, SLEEPER_TOP / 2);
+  for (const part of parts) {
+    let k = 0;
+    for (let i = 0; i < m; i++) for (const off of [-GAUGE, GAUGE]) place(part.mesh, k++, i * SEG + SEG / 2, off, part.y);
+  }
+  for (const o of [sleeper, ...parts.map(p => p.mesh)]) { o.castShadow = o.receiveShadow = true; scene.add(o); }
+}
+
+const nuts = [
+  // 라이트(호두 오일 6%) → 베이직(9%) → 리치(12%): 함량이 오를수록 진한 색
+  { x: -1.78, z: 0.0,  seed: 1, base: "#efdfc0", groove: "#c4a57a", flecks: null, rot: [0.0, 0.35, 0.12] },
+  { x: 0.0,  z: 1.35,  seed: 2, base: "#d0a26e", groove: "#93683d", flecks: null, rot: [-0.25, -0.5, -0.05] },
+  { x: 1.78, z: -0.05, seed: 3, base: "#9a6438", groove: "#5a3519", flecks: null, rot: [0.1, 0.9, -0.15] }
+];
+const group = new THREE.Group(); scene.add(group);
+for (const o of nuts) {
+  const m = makeWalnut(o.seed, o.base, o.groove, o.flecks, o.fth);
+  m.rotation.set(...o.rot);
+  m.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(m);
+  m.position.set(o.x, -box.min.y - 0.02 + (o.x === 0 ? SLEEPER_TOP + 0.06 : 0), o.z);     // 바닥에 닿게 (가운데 베이직은 레일 위)
+  group.add(m);
+}
+
+const controls = new OrbitControls(camera, canvas);
+controls.target.set(0, 0.9, 0);
+controls.enableDamping = true; controls.minDistance = 4; controls.maxDistance = 14;
+controls.maxPolarAngle = Math.PI / 2.05;
+controls.update();
+
+function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); }
+loop();
+window.__ready = true;
+</script>
+</body>
+</html>

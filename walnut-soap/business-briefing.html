@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>천안 호두길 1290 사업설명회 · LNM Solution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --walnut:#5a3a22; --walnut-d:#3b2414; --shell:#a9774a; --cream:#f7f0e4; --paper:#fffaf2;
+  --forest:#2f4a35; --sage:#8fa58a; --gold:#b8903f; --ink:#2a1f17; --muted:#6f5e4f; --line:#e3d5bf; --rail:#6d6862;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#d9d0c3}
+body{font-family:"Noto Sans KR","Malgun Gothic",sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;margin:10mm auto;background:var(--paper);position:relative;overflow:hidden;padding:15mm 15mm 16mm;display:flex;flex-direction:column}
+@media print{html,body{background:none}.page{margin:0;page-break-after:always;break-after:page}.page:last-child{page-break-after:auto;break-after:auto}}
+h1,h2,h3,.serif{font-family:"Noto Serif KR","Batang",serif}
+.en{font-family:"Cormorant Garamond",serif}
+.kicker{font-size:8.3pt;letter-spacing:.18em;color:var(--gold);font-weight:700}
+h2{font-size:19pt;color:var(--walnut-d);line-height:1.25;margin:1.5mm 0 1mm;font-weight:900}
+.lead{color:var(--muted);font-size:10pt;margin-bottom:3mm}
+h3{font-size:11pt;color:var(--walnut);margin-bottom:1.5mm;font-weight:700}
+.rule{height:2px;background:linear-gradient(90deg,var(--walnut),var(--gold) 40%,transparent);margin:2.5mm 0 4mm}
+.foot{position:absolute;left:15mm;right:15mm;bottom:7mm;display:flex;justify-content:space-between;font-size:7.3pt;color:var(--muted);border-top:1px solid var(--line);padding-top:1.8mm}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm}
+.card{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:3.5mm 4mm}
+.card.dark{background:var(--walnut-d);color:var(--cream);border:none}
+.card.forest{background:var(--forest);color:#eef2ea;border:none}
+.card.dark h3,.card.forest h3{color:#f1d9a6}
+ul.dot{list-style:none}
+ul.dot li{padding-left:3.6mm;position:relative;margin-bottom:.8mm}
+ul.dot li:before{content:"";position:absolute;left:0;top:.6em;width:1.5mm;height:1.5mm;border-radius:50%;background:var(--gold)}
+table{width:100%;border-collapse:collapse;font-size:8.6pt}
+th{background:var(--walnut);color:var(--cream);font-weight:500;text-align:left;padding:1.5mm 2.2mm}
+td{padding:1.5mm 2.2mm;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fbf5ea}
+td.r,th.r{text-align:right;white-space:nowrap}
+.note{font-size:7.6pt;color:var(--muted)}
+.chk{display:inline-block;font-size:7pt;padding:0 1.6mm;border-radius:8mm;background:#fdeee0;color:#9a4a1c;border:1px solid #f0c9a8;font-weight:700;vertical-align:1px}
+.asm{display:inline-block;font-size:7pt;padding:0 1.6mm;border-radius:8mm;background:var(--cream);color:var(--walnut);border:1px solid var(--line);font-weight:700;vertical-align:1px}
+
+/* 표지 */
+.cover{padding:0;background:var(--walnut-d);color:var(--cream)}
+.cover-top{padding:16mm 16mm 0;position:relative;z-index:2}
+.cover .kicker{color:#d9b871}
+.cover h1{font-size:38pt;line-height:1.08;font-weight:900;margin:4mm 0 2mm;color:#fff6e6}
+.cover h1 .en{display:block;font-size:20pt;font-style:italic;font-weight:600;color:#d9b871;letter-spacing:.02em;margin-top:2mm}
+.cover .sub{font-size:11pt;color:#e8d8bd;max-width:118mm}
+.map{position:absolute;right:-2mm;top:8mm;width:94mm;z-index:1}
+.cover-body{margin-top:auto;background:var(--paper);color:var(--ink);padding:7mm 15mm 18mm;position:relative;z-index:2;border-top-left-radius:12mm}
+.stops{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm;margin:2mm 0 4mm}
+.stop{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:3mm 3.5mm;border-top:3px solid var(--gold)}
+.stop .no{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:13pt;color:var(--gold);font-weight:600}
+.stop b{display:block;font-family:"Noto Serif KR",serif;font-size:12.5pt;color:var(--walnut-d)}
+.stop p{font-size:8.6pt;color:var(--muted);line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-bottom:4mm}
+.kpis div{border-left:2px solid var(--gold);padding-left:2.6mm}
+.kpis b{display:block;font-family:"Noto Serif KR",serif;font-size:15pt;color:var(--walnut);line-height:1.2}
+.kpis span{font-size:8pt;color:var(--muted);line-height:1.4;display:block}
+
+/* 조사 */
+.fact{display:grid;grid-template-columns:20mm 1fr;gap:2.5mm;padding:1.6mm 0;border-bottom:1px dashed var(--line)}
+.fact:last-child{border-bottom:none}
+.fact b{font-family:"Noto Serif KR",serif;color:var(--gold);font-size:10.5pt}
+.fact p{font-size:8.8pt}
+.swot{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm}
+.swot div{border-radius:2.5mm;padding:2.2mm 2.6mm;font-size:7.9pt;line-height:1.42}
+.cmp{display:grid;grid-template-columns:58mm 1fr;gap:3.5mm;align-items:stretch}
+.cmp .ph{background:#fff;border:1px solid var(--line);border-radius:2.5mm;padding:2mm;display:flex;flex-direction:column}
+.cmp .ph img{width:100%;height:40mm;object-fit:cover;border-radius:1.5mm;display:block}
+.cmp .ph .note{margin-top:1mm;font-size:7pt;line-height:1.35}
+.cmp table{font-size:8pt}
+.cmp th,.cmp td{padding:1.1mm 2mm}
+.cmp td:first-child{white-space:nowrap;color:var(--muted)}
+.cmp td.us{color:var(--walnut-d);font-weight:700;background:#fff7e8}
+.power{margin-top:2mm;background:var(--walnut-d);color:var(--cream);border-radius:2.5mm;padding:2.2mm 3.5mm;font-size:8.6pt}
+.power b{color:#f1d9a6;font-family:"Noto Serif KR",serif}
+.swot h4{font-family:"Noto Serif KR",serif;font-size:9.6pt;margin-bottom:1mm}
+.s1{background:#eef2ea}.s2{background:#fbf1e3}.s3{background:#eef4f6}.s4{background:#fbeceb}
+
+/* 상품 */
+.prod{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.prod .card{padding:3mm 3.4mm}
+.prod .ico{width:12mm;height:12mm;float:right;margin:-0.5mm -0.5mm 1mm 2mm}
+.prod h3{font-size:10pt;margin-bottom:.8mm}
+.prod .lb{font-size:7.2pt;letter-spacing:.14em;color:var(--gold);font-weight:700}
+.prod p{font-size:8.3pt;color:var(--ink);line-height:1.45;clear:none}
+.prod .pr{margin-top:1.2mm;font-size:8pt;color:var(--muted)}
+.flow{display:flex;align-items:stretch;gap:0;margin-top:1mm}
+.flow .n{flex:1;background:#fff;border:1px solid var(--line);border-radius:2.5mm;padding:2.4mm 2.6mm;font-size:8.2pt;line-height:1.4}
+.flow .n b{display:block;font-family:"Noto Serif KR",serif;color:var(--walnut-d);font-size:9.4pt}
+.flow .a{width:7mm;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:13pt;font-weight:700}
+
+/* 로드맵 */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin:1mm 0 1mm}
+.road:before{content:"";position:absolute;left:3mm;right:3mm;top:4.6mm;height:2.4mm;background:repeating-linear-gradient(90deg,var(--walnut) 0 1.2mm,transparent 1.2mm 3.2mm);opacity:.55}
+.road:after{content:"";position:absolute;left:3mm;right:3mm;top:4.6mm;height:2.4mm;border-top:1.2px solid var(--rail);border-bottom:1.2px solid var(--rail)}
+.road div{padding:0 2mm;position:relative;z-index:1}
+.road .dotp{display:block;width:7mm;height:7mm;border-radius:50%;background:var(--gold);border:2px solid var(--paper);box-shadow:0 0 0 1.2px var(--gold);margin:2.3mm 0 2mm 0}
+.road .dotp.big{background:var(--walnut-d);box-shadow:0 0 0 1.2px var(--walnut-d)}
+.road b{display:block;font-family:"Noto Serif KR",serif;font-size:10pt;color:var(--walnut-d)}
+.road small{display:block;font-size:7.6pt;color:var(--gold);font-weight:700;letter-spacing:.06em}
+.road ul{font-size:8.2pt;margin-top:1mm}
+.gain{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.gain div{background:#fff;border:1px solid var(--line);border-left:3px solid var(--forest);border-radius:2.5mm;padding:2.6mm 3mm}
+.gain b{display:block;font-family:"Noto Serif KR",serif;color:var(--forest);font-size:9.6pt;margin-bottom:.6mm}
+.gain p{font-size:8.2pt;line-height:1.45}
+.course{margin-top:3.5mm;background:var(--cream);border:1px dashed var(--shell);border-radius:2.5mm;padding:2.6mm 3.5mm;font-size:8.6pt;line-height:1.6}
+.course .en{font-style:italic;font-weight:600;color:var(--gold);font-size:11pt;margin-right:2mm}
+.course b{color:var(--walnut-d)}
+.course i{font-style:normal;color:var(--gold);font-weight:700;margin:0 1mm}
+.ask .grid3 b{display:block;font-family:"Noto Serif KR",serif;color:#f1d9a6;font-size:9.8pt;margin-bottom:.8mm}
+.ask .grid3 p{font-size:8.4pt;color:#eadcc4;line-height:1.45}
+.prod .card.hl{border:1.5px solid var(--gold);background:#fffaf0}
+.series{display:grid;grid-template-columns:1.12fr 1fr;gap:3.5mm}
+.skus{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm;align-content:start}
+.sku2{display:grid;grid-template-columns:9mm 1fr;gap:1.8mm;background:#fff;border:1px solid var(--line);border-radius:2.5mm;padding:2.3mm 2.5mm}
+.sku2 svg{width:9mm;height:9mm}
+.sku2 b{display:block;font-family:"Noto Serif KR",serif;font-size:8.8pt;white-space:nowrap;color:var(--walnut-d)}
+.sku2 p{font-size:7.8pt;line-height:1.4;margin:.3mm 0 .6mm}
+.sku2 span{font-size:7.6pt;color:var(--gold);font-weight:700}
+.proc{background:#fff;border:1px solid var(--line);border-radius:2.5mm;padding:2.4mm 3mm}
+.step{display:grid;grid-template-columns:5.5mm 21mm 1fr auto;gap:1.6mm;align-items:center;padding:.8mm 0;border-bottom:1px dashed var(--line);font-size:7.9pt}
+.step i{font-style:normal;width:5.5mm;height:5.5mm;border-radius:50%;background:var(--walnut);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:7.5pt;font-weight:700}
+.step b{font-family:"Noto Serif KR",serif;color:var(--walnut-d);font-size:8.2pt;white-space:nowrap}
+.step p{line-height:1.35}
+.step em{font-style:normal;font-size:6.8pt;padding:.2mm 1.4mm;border-radius:6mm;background:#eef2ea;color:var(--forest);font-weight:700;white-space:nowrap}
+.step em.add{background:#fdeee0;color:#9a4a1c}
+.proc .note{margin-top:1.4mm;line-height:1.45}
+.posterbox{background:#fff;border:1px solid var(--line);border-radius:2.5mm;padding:2.5mm;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.posterbox img{height:42mm;width:auto;border-radius:1.5mm;display:block;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.posterbox .note{margin-top:1.2mm}
+.posterbox.cv img{height:66mm}
+.brand{position:absolute;top:6.5mm;right:15mm;font-family:"Cormorant Garamond",serif;font-weight:700;font-size:10pt;letter-spacing:.22em;color:var(--walnut);display:flex;align-items:center;gap:1.8mm;z-index:3}
+.brand:before{content:"";width:4.5mm;height:4.5mm;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--gold),var(--walnut) 70%)}
+.cover .brand{color:#e8d8bd;left:16mm;right:auto;top:8mm}
+.cover-top{padding-top:17mm}
+.lnm-by{display:inline-block;margin-top:3mm;font-size:9pt;color:#d9b871;letter-spacing:.06em;border:1px solid rgba(217,184,113,.6);border-radius:8mm;padding:.6mm 3.5mm}
+.lnm-by b{font-family:"Cormorant Garamond",serif;font-size:12pt;color:#fff6e6;letter-spacing:.12em}
+.leader{display:flex;align-items:center;gap:3mm;margin-bottom:2.5mm}
+.leader .badge{flex:none;background:var(--walnut-d);color:#f1d9a6;font-size:8pt;font-weight:700;padding:1mm 3mm;border-radius:8mm;letter-spacing:.04em}
+.leader .big{font-size:13.5pt;color:var(--walnut-d);margin:0;font-weight:900}
+.tl{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;position:relative;align-items:end}
+.tl:before{content:"";position:absolute;left:2mm;right:2mm;bottom:3.2mm;height:1.2px;background:var(--line)}
+.tl div{position:relative;padding-bottom:6.5mm;font-size:8.6pt;color:var(--muted)}
+.tl div:after{content:"";position:absolute;left:0;bottom:1.8mm;width:3mm;height:3mm;border-radius:50%;background:#fff;border:1.2px solid var(--shell)}
+.tl b{display:block;font-family:"Noto Serif KR",serif;font-size:13pt;color:var(--shell);line-height:1.1}
+.tl small{font-size:7.6pt}
+.tl .on{color:var(--walnut-d);font-weight:700}
+.tl .on b{font-size:21pt;color:var(--gold)}
+.tl .on:after{width:4.5mm;height:4.5mm;bottom:1.1mm;background:var(--gold);border-color:var(--walnut-d)}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-bottom:3.5mm}
+.pillars div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--forest);border-radius:2.5mm;padding:2.4mm 2.8mm}
+.pillars em{font-style:normal;font-size:7.5pt;font-weight:700;color:#fff;background:var(--forest);border-radius:6mm;padding:.2mm 2mm}
+.pillars b{display:block;font-family:"Noto Serif KR",serif;color:var(--walnut-d);font-size:10pt;margin:1mm 0 .5mm}
+.pillars p{font-size:8pt;line-height:1.42;color:var(--ink)}
+.goalrow{grid-template-columns:1.45fr 1fr;gap:4mm}
+.stops2 div{font-size:8.4pt;padding:1.2mm 0;border-bottom:1px dashed var(--line);color:var(--muted)}
+.stops2 b{font-family:"Noto Serif KR",serif;color:var(--walnut-d);font-size:9.6pt;margin-right:1mm}
+.stops2 .no{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;color:var(--gold);font-size:11pt;margin-right:1.5mm}
+
+.p2 .fact{grid-template-columns:14mm 1fr;gap:2mm;padding:1.1mm 0}
+.p2 .fact b{font-size:9.4pt}
+.p2 .fact p{font-size:8.2pt;line-height:1.42}
+.p2 .card{padding:3mm 3.5mm}
+.p2 ul.dot li{font-size:8.3pt;line-height:1.42;margin-bottom:.4mm}
+.p2 .lead{margin-bottom:2mm}
+.p2 .rule{margin:2mm 0 3mm}
+.src{font-size:7pt;color:var(--muted);line-height:1.45;columns:2;column-gap:5mm}
+.src li{margin-bottom:.4mm;break-inside:avoid}
+</style>
+</head>
+<body>
+
+<!-- ===================== 1. 사업 개요 ===================== -->
+<section class="page cover">
+  <div class="brand">LNM SOLUTION</div>
+  <svg class="map" viewBox="0 0 420 420" aria-hidden="true">
+    <defs>
+      <linearGradient id="mt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4c6b4f"/><stop offset="1" stop-color="#2f4a35"/></linearGradient>
+    </defs>
+    <!-- 광덕산 -->
+    <path d="M30 360 L95 262 L128 300 L170 228 L235 360 Z" fill="url(#mt)" opacity=".9"/>
+    <path d="M150 256 L170 228 L190 262 L178 254 L168 266 Z" fill="#dfe9d6" opacity=".55"/>
+    <g fill="#6f8f68" opacity=".9"><circle cx="70" cy="340" r="12"/><circle cx="92" cy="333" r="10"/><circle cx="200" cy="342" r="11"/><circle cx="222" cy="337" r="9"/></g>
+    <!-- 기찻길 노선: 광덕산 → 천안삼거리 → 천안역 -->
+    <path id="line" d="M160 300 C 210 290, 230 250, 250 215 S 300 150, 340 92" fill="none" stroke="#8a7f74" stroke-width="13" stroke-linecap="round" opacity=".55"/>
+    <path d="M160 300 C 210 290, 230 250, 250 215 S 300 150, 340 92" fill="none" stroke="#3b2414" stroke-width="9" stroke-dasharray="2 5" stroke-linecap="butt"/>
+    <path d="M160 300 C 210 290, 230 250, 250 215 S 300 150, 340 92" fill="none" stroke="#d9b871" stroke-width="1.6" transform="translate(-3,-2)"/>
+    <path d="M160 300 C 210 290, 230 250, 250 215 S 300 150, 340 92" fill="none" stroke="#d9b871" stroke-width="1.6" transform="translate(3,2)"/>
+    <!-- 거점 -->
+    <g font-family="Noto Serif KR, serif" font-weight="700">
+      <circle cx="160" cy="300" r="11" fill="#fff6e6" stroke="#b8903f" stroke-width="3"/>
+      <text x="138" y="404" fill="#e8d8bd" font-size="17">① 광덕산</text>
+      <circle cx="250" cy="215" r="11" fill="#fff6e6" stroke="#b8903f" stroke-width="3"/>
+      <text x="268" y="232" fill="#e8d8bd" font-size="17">② 천안삼거리</text>
+      <rect x="326" y="78" width="28" height="28" rx="6" fill="#b8903f" stroke="#fff6e6" stroke-width="3"/>
+      <text x="296" y="62" fill="#fff6e6" font-size="18">③ 천안역</text>
+    </g>
+    <text x="252" y="300" fill="#d9b871" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" opacity=".85">Walnut Line 1290</text>
+  </svg>
+  <div class="cover-top">
+    <div class="kicker">사업설명회 자료 · 2026. 11</div>
+    <h1>천안 호두길 1290<span class="en">Walnut Line, Gwangdeok to Cheonan Station</span></h1>
+    <p class="sub">한국 호두의 시배지 광덕산에서 키운 <b>유기농 호두</b>를, 천안삼거리의 이야기와 천안역의 발길에 실어 <b>프리미엄 지역특산물</b>로 판매하는 지역 연계 사업</p>
+    <div class="lnm-by">제안 · <b>LNM Solution</b></div>
+  </div>
+  <div class="cover-body">
+    <div class="leader">
+      <span class="badge">지자체 브랜드의 리더 · 천안 굿즈</span>
+      <h3 class="big">성심당보다 22년 먼저, 지역 빵 브랜드의 원조는 천안입니다</h3>
+    </div>
+    <div class="tl">
+      <div class="on"><b>1934</b><span>천안 호두과자<br><small>천안역 앞에서 시작</small></span></div>
+      <div><b>1939</b><span>경주 황남빵</span></div>
+      <div><b>1945</b><span>군산 이성당</span></div>
+      <div><b>1956</b><span>대전 성심당</span></div>
+    </div>
+    <p class="note" style="margin:1mm 0 3.5mm">각 브랜드의 시작 연도 비교 (경향신문, 2022.9 보도 기준) · 다른 브랜드는 연도 비교로만 언급</p>
+
+    <h3>명성 · 입지 · 주민 · 관, 하나 되어 대한민국의 중심에</h3>
+    <div class="pillars">
+      <div><em>명성</em><b>호두의 시작</b><p>1290년 호두 시배지 광덕, 1934년 호두과자 원조 천안역</p></div>
+      <div><em>입지</em><b>길이 모이는 곳</b><p>한양에서 영남·호남으로 갈라지던 천안삼거리, 경부선·장항선·전철 1호선이 지나는 천안역</p></div>
+      <div><em>주민</em><b>호두로 사는 마을</b><p>광덕 호두 농가, 호두과자점 50여 곳, 호두축제·흥타령춤축제</p></div>
+      <div><em>관</em><b>도시가 투자하는 거점</b><p>천안역 증개축 시비 822억 원(총 1,121억), 삼거리공원 720억 원 재개장</p></div>
+    </div>
+
+    <div class="grid2 goalrow">
+      <div>
+        <h3>세 거점을 잇는 하나의 노선</h3>
+        <div class="stops2">
+          <div><span class="no">01</span><b>광덕산</b> 원료·체험 — 유기 호두 생산, 수확·까기 체험, 호두축제</div>
+          <div><span class="no">02</span><b>천안삼거리</b> 문화·축제 — 공원 팝업, 이야기 전시, 공예 교실</div>
+          <div><span class="no">03</span><b>천안역</b> 판매·관문 — 2028년 새 역사에 '호두길 숍' (하루 승하차 약 3만 2천 명)</div>
+        </div>
+        <div class="card dark" style="margin-top:3mm">
+          <h3>사업 목표</h3>
+          <ul class="dot">
+            <li>광덕 호두를 <b>유기농(우선 무농약) 인증 원료</b>로 키움</li>
+            <li>원물·오일·호두과자 1934 시리즈·정과·비누·공예 <b>6종</b>을 공동 브랜드로</li>
+            <li>수입 호두가 대부분인 시장에서 <b>국산 유기 호두</b>로 차별화</li>
+          </ul>
+        </div>
+      </div>
+      <div class="posterbox cv">
+        <img src="walnut-3d-cheonan-en.png" alt="walnut soap by Cheon An 포스터 영어판">
+        <p class="note">굿즈 포스터 시안 (영어판)</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot" style="color:#8a7863;border-color:#e3d5bf"><span>제안 LNM Solution · 천안 호두길 1290 · 사업설명회</span><span>1 / 4</span></div>
+</section>
+
+<!-- ===================== 2. 조사 결과 ===================== -->
+<section class="page p2">
+  <div class="brand">LNM SOLUTION</div>
+  <div class="kicker">01 · RESEARCH</div>
+  <h2>천안 호두, 무엇이 있고 무엇이 비어 있나</h2>
+  <p class="lead">공개 자료로 확인한 사실과, 아직 확인하지 못해 사업 준비 단계에서 조사해야 할 항목을 나눠 정리했습니다.</p>
+  <div class="rule"></div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>① 원료 · 광덕 호두</h3>
+      <div class="fact"><b>역사</b><p>고려 1290년 유청신이 원나라에서 묘목·열매를 가져와 광덕에 심었다는 전승. 광덕사 호두나무는 천연기념물.</p></div>
+      <div class="fact"><b>품종</b><p>충남 재배 호두 품종 중 <b>'광덕' 68.6%</b> (국립산림과학원 연구, 2010). 껍질이 얇고 알이 실하다고 알려짐.</p></div>
+      <div class="fact"><b>산지</b><p>국내 재배임가 2,050호·1,042ha, 주산지 <b>김천·영동·천안·무주</b> (KREI, 2010년 기준).</p></div>
+      <div class="fact"><b>작황</b><p>KREI 관측(2026.9): 올해 호두 생산량은 전년·평년보다 <b>감소 전망</b>. 천안이 주산지 조사 지역에 포함.</p></div>
+      <div class="fact"><b>미확인</b><p>천안 호두 최근 생산량·농가 수, 지리적표시 등록 여부, 유기·무농약 인증 농가 수 <span class="chk">확인 필요</span></p></div>
+    </div>
+    <div class="card">
+      <h3>② 기존 호두 특산물 · 거점</h3>
+      <div class="fact"><b>호두과자</b><p>1934년 천안역 앞 제과점 부부가 처음 만든 것으로 알려짐. 천안 시내 호두과자점은 <b>50여 곳</b>(보도 기준).</p></div>
+      <div class="fact"><b>축제</b><p>천안호두축제(2025.11.1~2, 광덕): 호두 까기·경매·호두과자 만들기, 호두 역사관·묘목 전시.</p></div>
+      <div class="fact"><b>삼거리</b><p>천안삼거리공원 <b>2025.9.1 재개장</b> (720억 원, 17만 3,364㎡). 흥타령춤축제는 종합운동장에서 개최 중.</p></div>
+      <div class="fact"><b>천안역</b><p>하루 승하차 약 <b>3만 2천 명</b>. 2003년부터 쓰던 임시역사를 2025.4~2028.5 증개축(선상역사, 1,121억 원).</p></div>
+      <div class="fact"><b>미확인</b><p>호두축제·삼거리공원 방문객 수, 호두과자 업계 연간 호두 사용량 <span class="chk">확인 필요</span></p></div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:4mm">
+    <div class="card forest">
+      <h3>③ 시장 환경</h3>
+      <ul class="dot">
+        <li>깐 호두 수입 <b>약 1,553만 kg</b>(2023, 전년 대비 +6.1%), 한국은 세계 호두 수입 4위권</li>
+        <li>세계 생산에서 한국 비중은 0.03% 수준 → 시중 호두 대부분이 수입산</li>
+        <li>그래서 <b>'국산·유기 호두로 만든 천안 특산물'</b>은 원산지 자체가 뚜렷한 차별점</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>④ 유기농 인증, 무엇이 필요한가</h3>
+      <ul class="dot">
+        <li><b>유기농</b>: 유기합성농약·화학비료를 쓰지 않음. <b>무농약</b>: 농약 없이 화학비료는 권장량 1/3 이하</li>
+        <li>친환경 인증 대상에 <b>임산물 포함</b>. 나무 작물은 전환기간이 필요해 무농약 → 유기 순서로 단계 전환 <span class="chk">기간 확인 필요</span></li>
+        <li>저탄소 인증은 친환경·GAP 인증을 먼저 받아야 신청 가능</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:3.5mm">기회와 과제</h3>
+  <div class="swot">
+    <div class="s1"><h4>강점</h4>한국 호두 시배지라는 단 하나의 이야기, '광덕' 품종, 호두과자 발상지라는 두 번째 이야기</div>
+    <div class="s2"><h4>약점</h4>원료 물량이 적고 줄어드는 추세, 유기 인증 농가 기반이 확인되지 않음, 상품이 호두과자에 쏠림</div>
+    <div class="s3"><h4>기회</h4>천안역 새 역사·삼거리공원 재개장, 고향사랑기부 답례품, 건강·친환경 선물 수요</div>
+    <div class="s4"><h4>위협</h4>값싼 수입 호두와의 가격 차, 기후로 인한 작황 변동, 다른 호두 주산지(무주·김천 등)와의 경쟁</div>
+  </div>
+
+  <h3 style="margin-top:3.5mm">⑤ 기존 사례 · 천안의 호두 비누 '파파호두'와 비교</h3>
+  <div class="cmp">
+    <div class="ph">
+      <img src="photos/papa-walnut-box.jpg" alt="파파호두 비누 상자 앞면">
+      <p class="note">기존 제품 상자 (사용자 제공 사진, 앞면·옆면) · 80g 바 비누</p>
+    </div>
+    <div>
+      <table>
+        <tr><th style="width:17%">구분</th><th>기존 파파호두 비누</th><th style="width:44%">광덕 1290 호두 비누</th></tr>
+        <tr><td>브랜드</td><td>인물 캐릭터 중심, <b>개인(업체) 브랜드</b>에 가까움</td><td class="us">농가·업체·천안시가 함께 쓰는 <b>지역 대표 브랜드</b></td></tr>
+        <tr><td>비누 형태</td><td>평평한 <b>2차원</b> 바 비누</td><td class="us">진짜 호두 같은 <b>입체</b> 비누, 오일 함량별 3가지 색</td></tr>
+        <tr><td>상품 범위</td><td>비누 단품 중심</td><td class="us">비누·쿠키·오일·정과·공예 등 <b>굿즈 라인</b></td></tr>
+        <tr><td>이야기</td><td>제품·인물 소개</td><td class="us">1290 시배지 · 1934 호두과자 · 천안역 노선</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="power">천안 업체가 이미 호두 비누를 팝니다(상자 기준). 경쟁보다 <b>협업 후보</b>로 함께하고, <b>입체 디자인 + 다양한 굿즈</b>로 '천안 호두' 전체의 <b>브랜드 파워</b>를 만듭니다.</div>
+  <div class="foot"><span>제안 LNM Solution · 천안 호두길 1290 · 조사 결과</span><span>2 / 4</span></div>
+</section>
+
+<!-- ===================== 3. 사업 모델 ===================== -->
+<section class="page">
+  <div class="brand">LNM SOLUTION</div>
+  <div class="kicker">02 · BUSINESS MODEL</div>
+  <h2>유기 호두 한 알로 여섯 가지 특산물</h2>
+  <p class="lead">원물부터 깨진 알·껍질까지 <b>버리는 것 없이</b> 가공해 공동 브랜드 <b>'광덕 1290'</b>으로 판매합니다.</p>
+  <div class="rule"></div>
+
+  <div class="prod">
+    <div class="card"><svg class="ico" viewBox="0 0 40 40"><ellipse cx="20" cy="21" rx="13" ry="15" fill="#c79a63"/><path d="M20 6v30" stroke="#8a5f35" stroke-width="2"/><path d="M12 14c3 3 3 7 0 10M28 14c-3 3-3 7 0 10" stroke="#8a5f35" stroke-width="1.6" fill="none"/></svg>
+      <span class="lb">RAW · 원물</span><h3>광덕 유기 호두</h3><p>수확 연도·농가 이름을 붙인 한정 소포장.</p><p class="pr">깐 호두 200g 25,000원 <span class="asm">가정</span></p></div>
+    <div class="card"><svg class="ico" viewBox="0 0 40 40"><path d="M15 6h10v6l4 5v17a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3V17l4-5z" fill="#d7b46a"/><rect x="11" y="21" width="18" height="9" fill="#5a3a22"/></svg>
+      <span class="lb">OIL · 오일</span><h3>냉압착 호두 오일</h3><p>작은 알·깨진 알을 저온 압착. 쿠키·비누 원료.</p><p class="pr">100ml 28,000원 <span class="asm">가정</span></p></div>
+    <div class="card hl"><svg class="ico" viewBox="0 0 40 40"><path d="M8 24a12 12 0 0 1 24 0v4H8z" fill="#b5793f"/><circle cx="20" cy="18" r="4" fill="#e9c88f"/><rect x="8" y="27" width="24" height="5" rx="2" fill="#8a5a2f"/></svg>
+      <span class="lb">BAKERY · 과자</span><h3>호두과자 1934 시리즈</h3><p>기존 호두과자에서 호두 쿠키 4종으로 확장 (아래).</p><p class="pr">14,000~25,000원 <span class="asm">가정</span></p></div>
+    <div class="card"><svg class="ico" viewBox="0 0 40 40"><rect x="6" y="12" width="28" height="20" rx="3" fill="#7a4a26"/><circle cx="14" cy="22" r="4" fill="#d9a660"/><circle cx="26" cy="22" r="4" fill="#d9a660"/><rect x="6" y="15" width="28" height="2" fill="#b8903f"/></svg>
+      <span class="lb">CONFECTION · 정과</span><h3>호두 정과·강정</h3><p>조청 정과. 명절 선물, 고향사랑기부 답례품.</p><p class="pr">선물세트 35,000원 <span class="asm">가정</span></p></div>
+    <div class="card"><svg class="ico" viewBox="0 0 40 40"><ellipse cx="11" cy="22" rx="7" ry="8" fill="#efdfc0"/><ellipse cx="20" cy="20" rx="7" ry="8" fill="#d0a26e"/><ellipse cx="29" cy="22" rx="7" ry="8" fill="#9a6438"/></svg>
+      <span class="lb">SOAP · 굿즈</span><h3>호두 오일 비누</h3><p>호두 오일 라이트 6%·베이직 9%·리치 12%.</p><p class="pr">미니 3알 15,000원 <span class="asm">가정</span></p></div>
+    <div class="card"><svg class="ico" viewBox="0 0 40 40"><path d="M20 8c8 0 12 6 12 12s-5 12-12 12S8 26 8 20s4-12 12-12z" fill="#8a6142"/><path d="M20 8v24" stroke="#d9b871" stroke-width="1.5"/><circle cx="20" cy="5" r="3" fill="none" stroke="#b8903f" stroke-width="1.5"/></svg>
+      <span class="lb">CRAFT · 공예</span><h3>호두 껍질 공예</h3><p>껍질 키링·기차표 책갈피, 체험 교실 재료.</p><p class="pr">키링 12,000원 <span class="asm">가정</span></p></div>
+  </div>
+
+  <h3 style="margin-top:3mm">호두과자 1934 시리즈 · 기존 호두과자에서 호두 쿠키 신제품으로</h3>
+  <div class="series">
+    <div class="skus">
+      <div class="sku2"><svg viewBox="0 0 40 40"><ellipse cx="20" cy="21" rx="14" ry="12" fill="#b9793d"/><path d="M20 10v22M12 16c3 3 3 7 0 10M28 16c-3 3-3 7 0 10" stroke="#7d4f25" stroke-width="1.6" fill="none"/></svg>
+        <div><b>① 1934 클래식</b><p>유기 호두 + 국산 팥앙금. 기존 호두과자 공정·틀 그대로, 원료만 바꿈</p><span>20개입 18,000원</span></div></div>
+      <div class="sku2"><svg viewBox="0 0 40 40"><ellipse cx="20" cy="21" rx="14" ry="12" fill="#e2b877"/><g fill="#9a6438"><circle cx="14" cy="18" r="2.2"/><circle cx="23" cy="16" r="1.8"/><circle cx="26" cy="24" r="2.2"/><circle cx="17" cy="26" r="1.8"/></g></svg>
+        <div><b>② 호두 버터 쿠키</b><p>호두 분태를 듬뿍 넣은 쿠키 반죽을 호두과자 틀로 구운 호두 모양 쿠키</p><span>10개입 15,000원</span></div></div>
+      <div class="sku2"><svg viewBox="0 0 40 40"><rect x="7" y="11" width="26" height="18" rx="2" fill="#d6a865"/><rect x="11" y="15" width="18" height="10" fill="none" stroke="#7d4f25" stroke-width="1.2" stroke-dasharray="2 1.5"/><path d="M14 20h12" stroke="#7d4f25" stroke-width="1.2"/></svg>
+        <div><b>③ 호두 오일 사블레</b><p>버터 일부를 광덕 냉압착 호두 오일로. 천안역 기차표 모양 스탬프</p><span>12개입 14,000원</span></div></div>
+      <div class="sku2"><svg viewBox="0 0 40 40"><circle cx="20" cy="21" r="13" fill="#c98e4f"/><g fill="#7a4a26"><rect x="13" y="15" width="6" height="5" rx="1.5"/><rect x="21" y="19" width="6" height="5" rx="1.5"/><rect x="15" y="24" width="5" height="4" rx="1.5"/></g></svg>
+        <div><b>④ 호두 정과 쿠키</b><p>조청 정과 조각을 올린 선물용 쿠키. 명절·기업 선물세트</p><span>선물상자 25,000원</span></div></div>
+      <p class="note" style="grid-column:1/-1">가격은 모두 가정 · 기존 호두과자점과 공동 생산(위탁·협업) 방식</p>
+    </div>
+    <div class="proc">
+      <div class="step"><i>1</i><b>원료 입고·검수</b><p>유기 인증서·이력 확인, 이물·곰팡이·수분 검사</p><em>기존</em></div>
+      <div class="step"><i>2</i><b>탈각·선별</b><p>통알·분태 분리, 깨진 알은 오일·정과로</p><em>광덕 가공장</em></div>
+      <div class="step"><i>3</i><b>저온 로스팅</b><p>떫은맛·수분을 줄여 고소하게, 산패 방지</p><em class="add">추가 검토</em></div>
+      <div class="step"><i>4</i><b>반죽</b><p>호두과자 반죽 / 쿠키 반죽(버터·호두 오일)</p><em>기존 믹서</em></div>
+      <div class="step"><i>5</i><b>성형</b><p>호두과자 틀에 반죽·앙금·호두, 사블레는 스탬프</p><em class="add">스탬프 추가</em></div>
+      <div class="step"><i>6</i><b>굽기</b><p>호두과자 자동 굽기기 / 쿠키는 오븐</p><em class="add">오븐 추가 검토</em></div>
+      <div class="step"><i>7</i><b>냉각·검사</b><p>실온 냉각, 금속 검출, 중량 확인</p><em>기존</em></div>
+      <div class="step"><i>8</i><b>포장·표시</b><p>질소 충전 개별 포장, 알레르기(호두·밀·달걀·우유) 표시</p><em>기존</em></div>
+      <p class="note">①·②는 기존 호두과자 설비로 바로 생산, ③·④는 성형·오븐 일부 추가 <span class="asm">가정</span> · 식품 제조 신고·HACCP 적용 여부 <span class="chk">확인 필요</span></p>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:2.5mm;grid-template-columns:1.5fr 1fr">
+    <div>
+      <h3>거점별 역할</h3>
+      <table>
+        <tr><th style="width:22%">거점</th><th>하는 일</th><th style="width:30%">주요 상품</th></tr>
+        <tr><td><b>① 광덕산</b></td><td>유기·무농약 재배, 수매·선별, 착유·가공장, 체험</td><td>원물, 오일, 체험</td></tr>
+        <tr><td><b>② 천안삼거리</b></td><td>공원·축제 팝업, 호두길 이야기 전시, 공예 교실</td><td>정과, 공예, 비누</td></tr>
+        <tr><td><b>③ 천안역</b></td><td>새 역사 대표 매장 '호두길 숍', 여행객 선물 판매</td><td>1934 시리즈, 선물세트</td></tr>
+      </table>
+      <p class="note" style="margin-top:1.2mm">흐름: 농가(계약 재배) → 영농조합(가칭) → 각 판매처, 수익 일부는 유기 전환에 재투자 <span class="asm">가정</span></p>
+    </div>
+    <div class="posterbox">
+      <img src="walnut-3d-cheonan-ko.png" alt="천안의 호두 비누 포스터 한글판">
+      <p class="note">굿즈 포스터 시안 (한글판)</p>
+    </div>
+  </div>
+  <div class="foot"><span>제안 LNM Solution · 천안 호두길 1290 · 사업 모델</span><span>3 / 4</span></div>
+</section>
+
+<!-- ===================== 4. 실행 계획 ===================== -->
+<section class="page">
+  <div class="brand">LNM SOLUTION</div>
+  <div class="kicker">03 · ROADMAP</div>
+  <h2>천안역 새 역사가 열리는 2028년에 맞춰</h2>
+  <p class="lead">원료 기반을 먼저 다지고, 2028년 5월 천안역 준공에 맞춰 대표 매장을 연 뒤 유기 인증 원료로 넓혀 갑니다.</p>
+  <div class="rule"></div>
+
+  <div class="road">
+    <div><span class="dotp"></span><small>2027 상반기</small><b>준비 · 협의체</b><ul class="dot"><li>천안시·생산자·호두과자 업계·산림조합 협의체</li><li>농가·물량 실태 조사</li><li>무농약 전환 시범 농가 모집</li></ul></div>
+    <div><span class="dotp"></span><small>2027 하반기</small><b>시제품 · 시범 판매</b><ul class="dot"><li>오일·정과·비누 시제품</li><li>호두축제·삼거리 팝업 시범 판매</li><li>고향사랑기부 답례품 등록</li></ul></div>
+    <div><span class="dotp big"></span><small>2028 · 천안역 준공</small><b>호두길 숍 개장</b><ul class="dot"><li>천안역 대표 매장 입점</li><li>'유기 호두과자 1934' 출시</li><li>광덕↔천안역 체험 투어</li></ul></div>
+    <div><span class="dotp"></span><small>2029 ~</small><b>유기 인증 · 확장</b><ul class="dot"><li>유기 인증 원료로 전환</li><li>온라인·기업 선물 채널</li><li>저탄소 인증 검토</li></ul></div>
+  </div>
+
+  <div class="grid2" style="margin-top:4mm">
+    <div>
+      <h3>소요 재원 <span class="asm">가정</span></h3>
+      <table>
+        <tr><th>항목</th><th class="r">금액</th></tr>
+        <tr><td>착유·가공 설비 (광덕)</td><td class="r">5.0억 원</td></tr>
+        <tr><td>천안역 매장 조성</td><td class="r">2.0억 원</td></tr>
+        <tr><td>브랜드·패키지·온라인</td><td class="r">1.0억 원</td></tr>
+        <tr><td>인증·농가 교육·컨설팅</td><td class="r">0.5억 원</td></tr>
+        <tr><td><b>합계</b></td><td class="r"><b>8.5억 원</b></td></tr>
+      </table>
+      <p class="note" style="margin-top:1.2mm">정부·지자체 6차산업화·임산물 지원사업, 고향사랑기금 활용 가능성 검토 <span class="chk">확인 필요</span></p>
+    </div>
+    <div>
+      <h3>매출·성과 목표 <span class="asm">가정</span></h3>
+      <table>
+        <tr><th>지표</th><th class="r">1년차</th><th class="r">2년차</th><th class="r">3년차</th></tr>
+        <tr><td>매출</td><td class="r">2억</td><td class="r">6억</td><td class="r">12억</td></tr>
+        <tr><td>참여 농가</td><td class="r">10곳</td><td class="r">20곳</td><td class="r">30곳</td></tr>
+        <tr><td>무농약·유기 인증 농가</td><td class="r">5곳</td><td class="r">12곳</td><td class="r">20곳</td></tr>
+        <tr><td>체험·투어 참가</td><td class="r">1천 명</td><td class="r">3천 명</td><td class="r">6천 명</td></tr>
+      </table>
+      <p class="note" style="margin-top:1.2mm">1년차 = 2027년. 실제 목표는 실태 조사 후 다시 정함</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:4mm">위험과 대응</h3>
+  <table>
+    <tr><th style="width:26%">위험</th><th>대응</th></tr>
+    <tr><td>원료 부족·작황 감소</td><td>계약 재배와 수매가 보장, 묘목 갱신 지원, 작은 알·깨진 알은 오일·정과로 활용</td></tr>
+    <tr><td>유기 인증까지 시간 소요</td><td>무농약 인증으로 먼저 출시하고 단계적으로 유기 전환, 표시는 실제 인증 수준에 맞춤</td></tr>
+    <tr><td>기존 호두과자 업계와 충돌</td><td>경쟁 대신 원료 공급·공동 라인(호두과자 1934)으로 협업</td></tr>
+    <tr><td>천안역 공사 일정 지연</td><td>삼거리공원·축제·온라인·답례품 판매를 먼저 시작</td></tr>
+    <tr><td>견과류 알레르기·표시 규정</td><td>모든 상품에 알레르기 표시, 비누는 화장품법 기준 준수</td></tr>
+  </table>
+
+  <div class="card dark ask" style="margin-top:4mm">
+    <h3>오늘 설명회에서 요청드리는 것 · 다음 단계</h3>
+    <div class="grid3">
+      <div><b>① 협의체 참여</b><p>천안시·광덕 생산자·호두과자 업계·산림조합이 함께하는 준비 협의체에 참여해 주세요.</p></div>
+      <div><b>② 실태 조사 협조</b><p>농가별 나무 수·수확량·재배 방식을 알려 주시면 원료 계획과 인증 일정을 세웁니다.</p></div>
+      <div><b>③ 시제품 협업</b><p>오일·정과·호두과자 1934 시제품을 함께 만들 가공·제과 업체를 모집합니다.</p></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:3.5mm">출처</h3>
+  <ul class="src">
+    <li>한국농촌경제연구원(KREI) 호두 관측 (2026.9), 해외출장 복명서(2010 재배 현황)</li>
+    <li>국립산림과학원, 호두나무 주요 재배지역의 생산비 분석 (2010, koreascience)</li>
+    <li>경인일보·매일신문 천안 호두 기사 / 세계일보 천안호두축제 (2025.11.3)</li>
+    <li>경향신문 천안 호두과자 기사 (2022.9) / 서울신문 천안삼거리공원 개장 (2025.9.1)</li>
+    <li>한국경제·문화일보·서울신문 천안역 증개축 보도 (2024~2025)</li>
+    <li>Tridge 한국 호두 수입 통계 (2023) / 농촌진흥청·지자체 친환경 인증 안내</li>
+  </ul>
+  <div class="foot"><span>제안 LNM Solution · 천안 호두길 1290 · 실행 계획 · 가격·재원·목표는 모두 가정이며 실태 조사 후 확정</span><span>4 / 4</span></div>
+</section>
+
+</body>
+</html>
