@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>입체 호두 비누 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#d9cfbf}
+body{display:flex;justify-content:center;font-family:"Noto Sans KR","Malgun Gothic",sans-serif}
+.canvas{width:1080px;height:1350px;position:relative;overflow:hidden;
+  background:radial-gradient(90% 70% at 50% 62%,#fbf5ea 0%,#efe4d0 55%,#dccbb0 100%)}
+#gl{position:absolute;inset:0;width:1080px;height:1350px;display:block}
+.head{position:absolute;top:70px;left:0;right:0;text-align:center;pointer-events:none}
+.kicker{font-size:20px;letter-spacing:.32em;color:#a57f35;font-weight:700}
+h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:78px;margin:16px 0 8px;color:#3b2414}
+.sub{font-size:26px;color:#6f5e4f}
+.names{position:absolute;top:1060px;left:110px;right:110px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;pointer-events:none}
+.names b{display:block;font-family:"Noto Serif KR",serif;font-size:30px;font-weight:700;color:#3b2414}
+.names span{font-size:19px;color:#7d6a57;letter-spacing:.06em}
+.chips{position:absolute;bottom:92px;left:0;right:0;display:flex;justify-content:center;gap:16px;pointer-events:none}
+.chips span{border:1.5px solid rgba(165,127,53,.55);color:#5a3a22;padding:12px 26px;border-radius:40px;font-size:21px;background:rgba(255,250,242,.5)}
+.foot{position:absolute;bottom:34px;left:0;right:0;text-align:center;font-size:16px;color:#9a8670;letter-spacing:.04em;pointer-events:none}
+</style>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<div class="canvas">
+  <canvas id="gl"></canvas>
+  <div class="head">
+    <div class="kicker">GWANGDEOK 1290 · GOODS</div>
+    <h1>호두알 미니 비누</h1>
+    <p class="sub">진짜 호두를 닮은 25g 고체 비누 3알</p>
+  </div>
+  <div class="names">
+    <div><b>오리진</b><span>호두 오일 · 껍질 분말</span></div>
+    <div><b>성환 배</b><span>호두 오일 · 배</span></div>
+    <div><b>광덕산 숲</b><span>호두 잎 · 쑥</span></div>
+  </div>
+  <div class="chips"><span>광덕 호두 오일</span><span>저온법 6주 숙성</span><span>실제 호두 크기</span></div>
+  <div class="foot">25g × 3 · 3D 디자인 시안이며 실제 제품과 다를 수 있습니다</div>
+</div>
+
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+/* ---------- 3D 펄린 노이즈 ---------- */
+const P = new Uint8Array(512);
+{ const p = [...Array(256).keys()]; let s = 1290;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [p[i], p[j]] = [p[j], p[i]]; }
+  for (let i = 0; i < 512; i++) P[i] = p[i & 255]; }
+const fade = t => t * t * t * (t * (t * 6 - 15) + 10);
+const lerp = (a, b, t) => a + (b - a) * t;
+function grad(h, x, y, z) { const u = h < 8 ? x : y, v = h < 4 ? y : (h === 12 || h === 14 ? x : z);
+  return ((h & 1) ? -u : u) + ((h & 2) ? -v : v); }
+function noise(x, y, z) {
+  const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+  x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+  const u = fade(x), v = fade(y), w = fade(z);
+  const A = P[X] + Y, AA = P[A] + Z, AB = P[A + 1] + Z, B = P[X + 1] + Y, BA = P[B] + Z, BB = P[B + 1] + Z;
+  return lerp(lerp(lerp(grad(P[AA] & 15, x, y, z), grad(P[BA] & 15, x - 1, y, z), u),
+                   lerp(grad(P[AB] & 15, x, y - 1, z), grad(P[BB] & 15, x - 1, y - 1, z), u), v),
+              lerp(lerp(grad(P[AA + 1] & 15, x, y, z - 1), grad(P[BA + 1] & 15, x - 1, y, z - 1), u),
+                   lerp(grad(P[AB + 1] & 15, x, y - 1, z - 1), grad(P[BB + 1] & 15, x - 1, y - 1, z - 1), u), v), w);
+}
+const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+/* ---------- 호두 형태 만들기 ---------- */
+function makeWalnut(seed, base, groove, flecks) {
+  const geo = new THREE.SphereGeometry(1, 400, 300);
+  const pos = geo.attributes.position, n = pos.count;
+  const col = new Float32Array(n * 3);
+  const cBase = new THREE.Color(base), cGroove = new THREE.Color(groove), cFleck = new THREE.Color(flecks || base), c = new THREE.Color();
+  const v = new THREE.Vector3();
+  for (let i = 0; i < n; i++) {
+    v.fromBufferAttribute(pos, i);              // 단위 구 위의 점 (= 법선)
+    const nx = v.x, ny = v.y, nz = v.z;
+    // 기본 호두 비율: 세로로 길고, 이음선 방향(x)으로 살짝 넓음
+    let sx = 0.92, sy = 1.08, sz = 0.86;
+    // 아래 끝은 뾰족하게, 위는 살짝 납작하게
+    const tip = smooth(0.45, 1.0, -ny);
+    const k = 1 - 0.42 * Math.pow(tip, 1.6);
+    const top = smooth(0.7, 1.0, ny);
+    let x = nx * sx * k, y = ny * sy * (1 - 0.06 * top) - 0.04 * tip, z = nz * sz * k;
+
+    // 가운데 이음선 (x=0 평면): 솟은 능선 + 양옆 홈
+    const ax = Math.abs(nx);
+    const ridge = 0.036 * Math.exp(-Math.pow(ax / 0.034, 2));
+    const seamGroove = -0.04 * Math.exp(-Math.pow((ax - 0.075) / 0.035, 2));
+    // 깊은 주름: 세로로 길쭉한 능선형 노이즈
+    const q = 3.4, o = seed * 7.3;
+    let w = noise(nx * q + o, ny * q * 0.55, nz * q) + 0.45 * noise(nx * q * 2.1 + o, ny * q * 1.1 + 3, nz * q * 2.1);
+    const g = Math.pow(1 - smooth(0.0, 0.2, Math.abs(w)), 1.4);          // 1 = 주름 골
+    const nearSeam = smooth(0.06, 0.16, ax);                // 이음선 근처는 매끈하게
+    const tipFade = 1 - 0.6 * tip;
+    const wr = -0.075 * g * nearSeam * tipFade;
+    const bump = 0.022 * noise(nx * 9 + o, ny * 9, nz * 9) * nearSeam + 0.025 * nearSeam * (0.4 + 0.6 * smooth(-0.15, 0.15, w)) * tipFade;
+    const d = ridge + seamGroove + wr + bump;
+    pos.setXYZ(i, x + nx * d, y + ny * d, z + nz * d);
+
+    // 색: 주름 골은 어둡게, 능선은 밝게
+    const shade = Math.min(1, g * nearSeam * 1.1 + Math.max(0, -seamGroove) * 12);
+    c.copy(cBase).lerp(cGroove, shade * 0.75);
+    if (ridge > 0.02) c.offsetHSL(0, -0.02, 0.06 * (ridge / 0.036));
+    // 점무늬 (오리진: 호두 껍질 분말)
+    if (flecks) { const f = noise(nx * 38 + o, ny * 38, nz * 38); if (f > 0.42) c.lerp(cFleck, Math.min(1, (f - 0.42) * 6)); }
+    col.set([c.r, c.g, c.b], i * 3);
+  }
+  geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+  geo.computeVertexNormals();
+  const mat = new THREE.MeshPhysicalMaterial({
+    vertexColors: true, roughness: 0.5, metalness: 0,
+    clearcoat: 0.35, clearcoatRoughness: 0.45, sheen: 0.4, sheenRoughness: 0.6,
+    sheenColor: new THREE.Color(base).offsetHSL(0, 0, 0.2)
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.castShadow = true; mesh.receiveShadow = true;
+  return mesh;
+}
+
+/* ---------- 장면 ---------- */
+const canvas = document.getElementById("gl");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+renderer.setSize(1080, 1350, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene = new THREE.Scene();
+const pm = new THREE.PMREMGenerator(renderer);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(30, 1080 / 1350, 0.1, 100);
+camera.position.set(0, 3.9, 11.2);
+camera.setViewOffset(1080, 1350, 0, -70, 1080, 1350);   // 장면을 화면 중앙보다 살짝 아래로
+
+const key = new THREE.DirectionalLight(0xfff1dc, 2.4);
+key.position.set(-4, 7, 4); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 8; key.shadow.bias = -0.0004;
+Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 20 });
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xffe2b8, 1.1); rim.position.set(5, 3, -4); scene.add(rim);
+scene.add(new THREE.HemisphereLight(0xfff8ee, 0xb89a72, 0.5));
+
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.2 }));
+ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+const nuts = [
+  { x: -1.3, z: 0.6, seed: 1, base: "#a8703f", groove: "#4a2c16", flecks: "#3e2410", rot: [0.0, 0.35, 0.12] },
+  { x: 0.0,   z: -0.95, seed: 2, base: "#ead7a8", groove: "#a4824a", flecks: null,   rot: [-0.25, -0.5, -0.05] },
+  { x: 1.3,  z: 0.55, seed: 3, base: "#577a5a", groove: "#20362a", flecks: null,   rot: [0.1, 0.9, -0.15] }
+];
+const group = new THREE.Group(); scene.add(group);
+for (const o of nuts) {
+  const m = makeWalnut(o.seed, o.base, o.groove, o.flecks);
+  m.rotation.set(...o.rot);
+  m.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(m);
+  m.position.set(o.x, -box.min.y - 0.02, o.z);     // 바닥에 닿게
+  group.add(m);
+}
+
+const controls = new OrbitControls(camera, canvas);
+controls.target.set(0, 0.85, 0);
+controls.enableDamping = true; controls.minDistance = 4; controls.maxDistance = 14;
+controls.maxPolarAngle = Math.PI / 2.05;
+controls.update();
+
+function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); }
+loop();
+window.__ready = true;
+</script>
+</body>
+</html>

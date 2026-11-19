@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>광덕 1290 비누 제안서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --walnut:#5a3a22; --walnut-d:#3b2414; --shell:#a9774a; --cream:#f7f0e4; --paper:#fffaf2;
+  --forest:#2f4a35; --sage:#8fa58a; --gold:#b8903f; --ink:#2a1f17; --muted:#6f5e4f; --line:#e3d5bf;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#d9d0c3}
+body{font-family:"Noto Sans KR","Malgun Gothic",sans-serif;color:var(--ink);font-size:10.2pt;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;margin:10mm auto;background:var(--paper);position:relative;overflow:hidden;padding:16mm 16mm 14mm;display:flex;flex-direction:column}
+@media print{html,body{background:none}.page{margin:0;page-break-after:always;break-after:page}.page:last-child{page-break-after:auto;break-after:auto}}
+h1,h2,h3,.serif{font-family:"Noto Serif KR","Batang",serif}
+.kicker{font-size:8.5pt;letter-spacing:.18em;color:var(--gold);font-weight:700;text-transform:uppercase}
+h2{font-size:21pt;color:var(--walnut-d);line-height:1.25;margin:2mm 0 1mm;font-weight:900}
+.lead{color:var(--muted);font-size:10.5pt;margin-bottom:5mm}
+h3{font-size:12pt;color:var(--walnut);margin-bottom:2mm;font-weight:700}
+.rule{height:2px;background:linear-gradient(90deg,var(--walnut),var(--gold) 40%,transparent);margin:3mm 0 5mm}
+.foot{position:absolute;left:16mm;right:16mm;bottom:8mm;display:flex;justify-content:space-between;font-size:7.5pt;color:var(--muted);border-top:1px solid var(--line);padding-top:2mm}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+.card{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:4mm 4.5mm}
+.card.dark{background:var(--walnut-d);color:var(--cream);border:none}
+.card.forest{background:var(--forest);color:#eef2ea;border:none}
+.card.dark h3,.card.forest h3{color:#f1d9a6}
+ul.dot{list-style:none}
+ul.dot li{padding-left:4mm;position:relative;margin-bottom:1mm}
+ul.dot li:before{content:"";position:absolute;left:0;top:.62em;width:1.6mm;height:1.6mm;border-radius:50%;background:var(--gold)}
+table{width:100%;border-collapse:collapse;font-size:9pt}
+th{background:var(--walnut);color:var(--cream);font-weight:500;text-align:left;padding:1.8mm 2.5mm}
+td{padding:1.8mm 2.5mm;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fbf5ea}
+.tag{display:inline-block;font-size:7.5pt;padding:.4mm 2mm;border-radius:10mm;background:var(--cream);color:var(--walnut);border:1px solid var(--line);margin-right:1mm}
+.note{font-size:8pt;color:var(--muted)}
+.num{font-family:"Noto Serif KR",serif;font-weight:900;color:var(--gold)}
+
+/* cover */
+.cover{padding:0;background:var(--walnut-d);color:var(--cream)}
+.cover-top{padding:18mm 18mm 0;position:relative;z-index:2}
+.cover .kicker{color:#d9b871}
+.cover h1{font-size:44pt;line-height:1.05;font-weight:900;margin:5mm 0 3mm;color:#fff6e6}
+.cover h1 small{display:block;font-size:13pt;font-weight:500;letter-spacing:.3em;color:#d9b871;margin-top:3mm}
+.cover .sub{font-size:12pt;color:#e8d8bd;max-width:120mm}
+.cover-art{position:absolute;right:-18mm;top:40mm;width:150mm;opacity:.95}
+.cover-body{margin-top:auto;background:var(--paper);color:var(--ink);padding:9mm 18mm 18mm;position:relative;z-index:2;border-top-left-radius:14mm}
+.story{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:3mm 0 5mm}
+.story div{border-left:2px solid var(--gold);padding-left:3mm}
+.story b{display:block;font-family:"Noto Serif KR",serif;font-size:15pt;color:var(--walnut)}
+.story span{font-size:8.6pt;color:var(--muted);line-height:1.45;display:block}
+.pos{display:grid;grid-template-columns:1.1fr 1fr;gap:5mm}
+
+/* product */
+.sku{display:grid;grid-template-columns:22mm 1fr;gap:3mm;align-items:start;background:#fff;border:1px solid var(--line);border-radius:3mm;padding:3mm}
+.sku svg{width:22mm;height:16mm}
+.sku h3{margin-bottom:.5mm}
+.sku .en{font-size:7.5pt;letter-spacing:.15em;color:var(--gold);font-weight:700}
+.sku p{font-size:9pt}
+.bar{height:3mm;border-radius:2mm;background:var(--line);overflow:hidden;margin-top:1mm}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--walnut),var(--shell))}
+.formula td:last-child{text-align:right;white-space:nowrap}
+
+/* timeline */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.page:last-child .lead{margin-bottom:3.5mm}
+.road div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--forest);border-radius:2mm;padding:3mm;font-size:8.8pt}
+.road b{display:block;color:var(--forest);font-size:9.5pt;margin-bottom:1mm}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 : CONCEPT ============ -->
+<section class="page cover">
+  <svg class="cover-art" viewBox="0 0 400 400" aria-hidden="true">
+    <defs>
+      <radialGradient id="g1" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#c79563"/><stop offset=".6" stop-color="#8a5a33"/><stop offset="1" stop-color="#5a3a22"/></radialGradient>
+    </defs>
+    <circle cx="200" cy="200" r="190" fill="none" stroke="#d9b871" stroke-opacity=".25" stroke-width="1"/>
+    <circle cx="200" cy="200" r="160" fill="none" stroke="#d9b871" stroke-opacity=".18" stroke-width="1" stroke-dasharray="3 6"/>
+    <!-- walnut -->
+    <g transform="translate(200 200)">
+      <ellipse rx="105" ry="120" fill="url(#g1)"/>
+      <path d="M0-120 C-8-60 8-20 0 0 C-8 30 8 80 0 120" stroke="#3b2414" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <g stroke="#3b2414" stroke-opacity=".55" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M-20-95 C-55-85 -60-55 -35-45 C-70-35 -75 0 -45 5 C-80 20 -70 55 -40 60 C-65 80 -45 105 -20 98"/>
+        <path d="M20-95 C55-85 60-55 35-45 C70-35 75 0 45 5 C80 20 70 55 40 60 C65 80 45 105 20 98"/>
+        <path d="M-60-70 C-85-40 -88 30 -62 80" stroke-opacity=".3"/>
+        <path d="M60-70 C85-40 88 30 62 80" stroke-opacity=".3"/>
+      </g>
+      <ellipse rx="105" ry="120" fill="none" stroke="#f1d9a6" stroke-opacity=".35" stroke-width="2"/>
+    </g>
+    <!-- leaves -->
+    <g fill="#5d7a5f" opacity=".9">
+      <path d="M300 70 C340 40 380 60 385 90 C350 105 315 98 300 70Z"/>
+      <path d="M290 95 C305 130 290 165 265 175 C255 140 265 110 290 95Z" fill="#4a6a4f"/>
+    </g>
+    <path d="M300 70 L385 90 M290 95 L265 175" stroke="#2f4a35" stroke-width="1.5"/>
+  </svg>
+
+  <div class="cover-top">
+    <div class="kicker">Proposal · Cheonan Gwangdeok Walnut Village</div>
+    <h1>광덕 1290<small>GWANGDEOK 1290 · WALNUT SOAP</small></h1>
+    <p class="sub serif">한국 호두가 처음 뿌리내린 마을에서 만든<br>프리미엄 올가닉 고체 비누</p>
+  </div>
+
+  <div class="cover-body">
+    <div class="kicker">01 · 브랜드 콘셉트</div>
+    <h2 style="font-size:18pt">"호두과자의 도시"를 넘어, <br>"호두가 시작된 마을"의 이야기를 씻는 비누</h2>
+    <div class="story">
+      <div><b>1290</b><span>고려 충렬왕 16년, 유청신이 원나라에서 호두를 들여와 광덕에 심었다는 전승</span></div>
+      <div><b>시배지</b><span>천안 광덕면은 한국 호두 재배가 처음 시작된 곳으로 알려짐</span></div>
+      <div><b>천연기념물</b><span>광덕사 호두나무, 수령 약 400년으로 추정되는 마을의 상징</span></div>
+      <div><b>호두마을</b><span>광덕산 자락의 호두 농가·숲·사찰이 어우러진 지역 경관</span></div>
+    </div>
+    <div class="pos">
+      <div class="card">
+        <h3>포지셔닝</h3>
+        <ul class="dot">
+          <li><b>누구에게</b> 지역 기념품을 '먹고 끝나는 것'보다 오래 쓰는 선물로 원하는 30~50대, 선물 구매자</li>
+          <li><b>무엇을</b> 광덕 호두 오일·껍질을 넣은 저온숙성(CP) 고체 비누</li>
+          <li><b>왜 다른가</b> 원료 산지 = 이야기의 무대. 700년 서사를 가진 '원산지 비누'</li>
+          <li><b>가격대</b> 100g 1구 2만 원대의 프리미엄 선물 비누</li>
+        </ul>
+      </div>
+      <div class="card dark">
+        <h3>브랜드 약속 3가지</h3>
+        <ul class="dot">
+          <li><b>원산지</b> 호두는 광덕면 농가와 계약 수매, 농가명 표기</li>
+          <li><b>올가닉</b> 유기농 인증 기준에 맞춘 처방, 인증 획득 후 '유기농' 표기</li>
+          <li><b>느림</b> 손으로 자르고 6주 숙성, 배치 번호·숙성일 각인</li>
+        </ul>
+        <p class="note" style="color:#cdb894;margin-top:2mm">※ 브랜드명 '광덕 1290'은 제안안이며 상표 출원 전 선행조사 필요</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot" style="z-index:3"><span>광덕 1290 · 천안 호두마을 프리미엄 비누 제안서</span><span>1 / 4</span></div>
+</section>
+
+<!-- ============ PAGE 2 : PRODUCT ============ -->
+<section class="page">
+  <div class="kicker">02 · 제품 라인업 & 처방</div>
+  <h2>호두 한 알을 통째로 쓰는 비누</h2>
+  <p class="lead">호두의 <b>기름(속살)</b>, <b>껍질</b>, <b>잎</b>을 각각 다른 역할로 나누어 쓰고, 천안의 다른 특산물과 짝지어 지역성을 넓힙니다.</p>
+
+  <div style="display:grid;grid-template-columns:92mm 1fr;gap:4mm;margin-bottom:4mm;align-items:stretch">
+    <figure style="position:relative;border-radius:3mm;overflow:hidden;background:#ece1cb;margin:0;border:1px solid var(--line)">
+      <div style="width:100%;height:43mm;overflow:hidden;position:relative">
+        <img src="walnut-3d-feed.png" alt="입체 호두알 미니 비누 3알 3D 시안" style="position:absolute;width:80%;left:10%;top:-28.6mm;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+      </div>
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:1.2mm 3mm;font-size:7.5pt;color:#f1e2c4;background:linear-gradient(transparent,rgba(43,26,15,.8))">호두알 미니 비누 3D 시안 · 오리진 / 성환 배 / 광덕산 숲</figcaption>
+    </figure>
+    <div class="card" style="padding:3mm 4mm;display:flex;flex-direction:column;justify-content:space-between;font-size:8.8pt;line-height:1.45">
+      <p><b style="color:var(--walnut)">호두 오일</b> · 리놀레산이 풍부해 거품이 부드럽고 촉촉함. 산패가 빨라 <b>10~12%</b> 이내 + 로즈마리 추출물로 산화 방지.</p>
+      <p><b style="color:var(--walnut)">호두 껍질 분말</b> · <b>1~2%</b> 넣어 부드러운 각질 정리감, 단면의 갈색 점무늬로 '호두'가 보이게 함.</p>
+      <p><b style="color:var(--walnut)">호두 잎 우림액</b> · 광덕 숲의 녹색을 담는 원료. 수급·안전성 확인 뒤 <b>시즌 한정</b> 적용.</p>
+    </div>
+  </div>
+
+  <h3>시그니처 라인업 (3종 + 굿즈 1종)</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:5mm">
+    <div class="sku">
+      <svg viewBox="0 0 120 88"><rect x="8" y="14" width="104" height="62" rx="12" fill="#a9774a"/><rect x="8" y="14" width="104" height="62" rx="12" fill="none" stroke="#5a3a22" stroke-width="2"/><g fill="#5a3a22" opacity=".5"><circle cx="30" cy="35" r="2"/><circle cx="52" cy="58" r="1.6"/><circle cx="80" cy="30" r="1.8"/><circle cx="95" cy="60" r="2"/><circle cx="66" cy="44" r="1.4"/></g><text x="60" y="51" text-anchor="middle" font-size="11" font-family="serif" font-weight="700" fill="#fff6e6">1290</text></svg>
+      <div><span class="en">SIGNATURE · ORIGIN</span><h3>광덕 1290 오리진</h3><p>호두 오일 + 호두 껍질 분말. 브랜드 대표 상품, 얼굴·바디 겸용. 무향 또는 은은한 우디향.</p><span class="tag">대표</span><span class="tag">100g</span><span class="tag">스크럽감 중</span></div>
+    </div>
+    <div class="sku">
+      <svg viewBox="0 0 120 88"><rect x="8" y="14" width="104" height="62" rx="12" fill="#efe3c6"/><rect x="8" y="14" width="104" height="62" rx="12" fill="none" stroke="#b8903f" stroke-width="2"/><path d="M8 52 C40 42 70 62 112 48 L112 64 C112 71 106 76 100 76 L20 76 C14 76 8 71 8 64Z" fill="#d9c08a"/><text x="60" y="40" text-anchor="middle" font-size="10" font-family="serif" font-weight="700" fill="#5a3a22">PEAR</text></svg>
+      <div><span class="en">CHEONAN DUO · PEAR</span><h3>호두 × 성환 배</h3><p>호두 오일 + 천안 성환 배 과즙(또는 추출물). 산뜻하고 순한 세안용. 천안 특산 2종을 한 비누에.</p><span class="tag">세안</span><span class="tag">100g</span><span class="tag">순함</span></div>
+    </div>
+    <div class="sku">
+      <svg viewBox="0 0 120 88"><rect x="8" y="14" width="104" height="62" rx="12" fill="#3f5c45"/><rect x="8" y="14" width="104" height="62" rx="12" fill="none" stroke="#2f4a35" stroke-width="2"/><path d="M40 60 C45 35 75 28 85 30 C80 50 62 62 40 60Z" fill="#8fa58a"/><path d="M40 60 L85 30" stroke="#2f4a35" stroke-width="1.5"/></svg>
+      <div><span class="en">FOREST · LIMITED</span><h3>광덕산 숲</h3><p>호두 잎 우림액 + 쑥 또는 녹차 분말. 짙은 녹색의 계절 한정판, 바디·남성 선물용.</p><span class="tag">한정</span><span class="tag">100g</span><span class="tag">상쾌함</span></div>
+    </div>
+    <div class="sku">
+      <svg viewBox="0 0 120 88"><g fill="#a9774a" stroke="#5a3a22" stroke-width="1.5"><ellipse cx="32" cy="48" rx="18" ry="21"/><ellipse cx="60" cy="44" rx="18" ry="21"/><ellipse cx="88" cy="48" rx="18" ry="21"/></g><g stroke="#3b2414" stroke-width="1.6" fill="none"><path d="M32 27 V69"/><path d="M60 23 V65"/><path d="M88 27 V69"/></g></svg>
+      <div><span class="en">GOODS · MINI</span><h3>호두알 미니 비누 (굿즈)</h3><p>실제 호두 크기·모양의 25g 미니 비누 3알. 호두과자 상자처럼 생긴 종이 상자에 담는 여행 기념품·답례품.</p><span class="tag">굿즈</span><span class="tag">25g×3</span><span class="tag">입문가</span></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h3>기본 처방 예시 · 오리진 (오일 100 기준)</h3>
+      <table class="formula">
+        <tr><th>원료</th><th>비율</th></tr>
+        <tr><td>유기농 올리브 오일</td><td>38%</td></tr>
+        <tr><td>유기농 코코넛 오일</td><td>22%</td></tr>
+        <tr><td>유기농 시어버터</td><td>15%</td></tr>
+        <tr><td><b>광덕 호두 오일</b> (냉압착)</td><td><b>12%</b></td></tr>
+        <tr><td>쌀겨 오일</td><td>8%</td></tr>
+        <tr><td>피마자 오일</td><td>5%</td></tr>
+        <tr><td colspan="2" class="note">+ 호두 껍질 분말 1.5% · 로즈마리 추출물 0.1% · 과지방 6% · 팜유 미사용</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>제품 규격</h3>
+      <table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>제법</td><td>저온법(CP), 4~6주 숙성</td></tr>
+        <tr><td>중량</td><td>100g (미니 25g)</td></tr>
+        <tr><td>사용기한</td><td>제조일로부터 18개월 (안정성 시험 후 확정)</td></tr>
+        <tr><td>표기</td><td>전성분, <b>견과류(호두) 함유 주의</b>, 배치·숙성일</td></tr>
+        <tr><td>인증 목표</td><td>식약처 지정기관 유기농화장품 인증</td></tr>
+      </table>
+      <p class="note" style="margin-top:2mm">※ 처방은 기획용 예시이며 시제품·안정성·유리알칼리 시험으로 확정합니다.</p>
+    </div>
+  </div>
+  <div class="foot"><span>광덕 1290 · 천안 호두마을 프리미엄 비누 제안서</span><span>2 / 4</span></div>
+</section>
+
+<!-- ============ PAGE 3 : PACKAGE · GOODS · EXPERIENCE ============ -->
+<section class="page">
+  <div class="kicker">03 · 패키지 · 굿즈 · 지역 체험</div>
+  <h2>상자를 여는 순간, 광덕이 보이게</h2>
+  <p class="lead">프리미엄은 원료만으로 완성되지 않습니다. 패키지·굿즈·체험이 같은 이야기를 반복해 '천안에서만 사는 이유'를 만듭니다.</p>
+
+  <div class="grid2" style="margin-bottom:5mm;align-items:stretch">
+    <div class="card" style="display:flex;gap:4mm;align-items:center">
+      <svg viewBox="0 0 150 130" style="width:44mm;flex:none" aria-hidden="true">
+        <rect x="18" y="38" width="114" height="78" rx="4" fill="#5a3a22"/>
+        <path d="M18 38 L36 14 H114 L132 38Z" fill="#7a5131"/>
+        <rect x="18" y="62" width="114" height="18" fill="#b8903f"/>
+        <text x="75" y="75" text-anchor="middle" font-size="10" font-family="serif" font-weight="700" fill="#3b2414">광덕 1290</text>
+        <g transform="translate(75 98)" fill="#f1d9a6" opacity=".85"><ellipse rx="7" ry="8"/><path d="M0-8 V8" stroke="#5a3a22" stroke-width="1.2"/></g>
+        <circle cx="118" cy="104" r="8" fill="none" stroke="#f1d9a6" stroke-width="1"/><text x="118" y="107" text-anchor="middle" font-size="6" fill="#f1d9a6">No.</text>
+      </svg>
+      <div>
+        <h3>패키지 디자인</h3>
+        <ul class="dot" style="font-size:9pt">
+          <li>호두 갈색 + 금박 '1290' 로고, 크라프트 재생지</li>
+          <li>뚜껑 안쪽에 유청신 이야기와 광덕사 호두나무 일러스트</li>
+          <li>계약 농가 이름·수확 연도·배치 번호 스티커</li>
+          <li>플라스틱 0: 종이 상자 + 면 끈 + 종이 완충재</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card dark">
+      <h3>선물세트 구성</h3>
+      <table style="font-size:8.8pt;color:var(--ink)">
+        <tr><th style="background:#b8903f;color:#2a1f17">세트</th><th style="background:#b8903f;color:#2a1f17">구성</th></tr>
+        <tr><td style="background:#fff">광덕 기념</td><td style="background:#fff">호두알 미니 3알</td></tr>
+        <tr><td style="background:#fbf5ea">천안 듀오</td><td style="background:#fbf5ea">오리진 + 호두×성환 배</td></tr>
+        <tr><td style="background:#fff">1290 시그니처</td><td style="background:#fff">3종 + 나무 비누받침 (호두나무 전정목 활용)</td></tr>
+        <tr><td style="background:#fbf5ea">명절 기업선물</td><td style="background:#fbf5ea">시그니처 + 천안 호두 원물 소포장</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>호두마을 굿즈 확장</h3>
+  <div class="grid3" style="margin-bottom:5mm;grid-template-columns:repeat(4,1fr)">
+    <div class="card" style="padding:3mm"><b style="color:var(--walnut)">호두나무 비누받침</b><p class="note">가지치기한 호두나무로 만든 받침. 버려지는 자원을 굿즈로.</p></div>
+    <div class="card" style="padding:3mm"><b style="color:var(--walnut)">호두 껍질 수세미 파우치</b><p class="note">비누를 넣어 거품을 내는 면 파우치, 마을 로고 자수.</p></div>
+    <div class="card" style="padding:3mm"><b style="color:var(--walnut)">스탬프 카드</b><p class="note">광덕사·호두나무·체험장 방문 스탬프 → 미니 비누 증정.</p></div>
+    <div class="card" style="padding:3mm"><b style="color:var(--walnut)">씨앗 엽서</b><p class="note">구매 고객용 호두마을 엽서, 뒷면에 제품 스토리 QR.</p></div>
+  </div>
+
+  <div class="card forest" style="margin-bottom:5mm">
+    <h3>호두마을 체험 프로그램 · "나의 1290 비누"</h3>
+    <div class="grid3" style="gap:3mm;font-size:9pt">
+      <div><b style="color:#f1d9a6">① 호두 이야기 산책 (30분)</b><br>광덕사 호두나무와 호두밭을 걸으며 시배지 이야기 듣기</div>
+      <div><b style="color:#f1d9a6">② 비누 만들기 (60분)</b><br>숙성 완료된 비누 베이스에 호두 껍질 장식·이름 도장 찍기 (가성소다 직접 취급 없음)</div>
+      <div><b style="color:#f1d9a6">③ 4주 뒤 택배 (선택)</b><br>내가 찍은 배치 번호의 숙성 비누를 집으로 배송 → 재방문·재구매 연결</div>
+    </div>
+    <p class="note" style="color:#cfe0cc;margin-top:2mm">대상: 가족 여행객, 학교·기관 단체, 기업 워크숍 · 정원 10~20명 · 우천 시 실내 진행</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>스토리텔링 장치</h3>
+      <ul class="dot" style="font-size:9pt">
+        <li>비누마다 <b>배치 번호 = 그날 수확한 농가</b>를 연결하는 QR</li>
+        <li>매년 첫 생산분은 '광덕 1290 빈티지'로 연도 표기</li>
+        <li>비누 1개 판매 시 호두나무 관리 기금 적립(금액은 협의)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>디자인 톤</h3>
+      <div style="display:flex;gap:2mm;margin:1mm 0 2mm">
+        <span style="flex:1;height:9mm;border-radius:2mm;background:#3b2414"></span>
+        <span style="flex:1;height:9mm;border-radius:2mm;background:#a9774a"></span>
+        <span style="flex:1;height:9mm;border-radius:2mm;background:#f7f0e4;border:1px solid #e3d5bf"></span>
+        <span style="flex:1;height:9mm;border-radius:2mm;background:#2f4a35"></span>
+        <span style="flex:1;height:9mm;border-radius:2mm;background:#b8903f"></span>
+      </div>
+      <p class="note">호두 껍질 · 호두 속살 · 크림 · 광덕산 숲 · 금빛 포인트. 세리프 서체로 '오래된 이야기'의 품격.</p>
+    </div>
+  </div>
+  <div class="foot"><span>광덕 1290 · 천안 호두마을 프리미엄 비누 제안서</span><span>3 / 4</span></div>
+</section>
+
+<!-- ============ PAGE 4 : SALES · EXECUTION ============ -->
+<section class="page">
+  <div class="kicker">04 · 판매 전략 & 실행 계획</div>
+  <h2>어디서, 얼마에, 어떻게 팔 것인가</h2>
+  <p class="lead">관광 현장 판매로 이야기를 알리고, 답례품·기업선물·온라인으로 반복 구매를 만듭니다.</p>
+
+  <div class="grid2" style="margin-bottom:5mm">
+    <div>
+      <h3>가격안 <span class="note">(가정 · 시장조사 후 확정)</span></h3>
+      <table>
+        <tr><th>상품</th><th>판매가</th><th>목표 원가율</th></tr>
+        <tr><td>오리진 / 성환 배 100g</td><td>22,000원</td><td>25~30%</td></tr>
+        <tr><td>광덕산 숲 한정 100g</td><td>25,000원</td><td>25~30%</td></tr>
+        <tr><td>호두알 미니 25g×3</td><td>15,000원</td><td>30%</td></tr>
+        <tr><td>천안 듀오 세트</td><td>45,000원</td><td>30%</td></tr>
+        <tr><td>1290 시그니처 세트</td><td>78,000원</td><td>30~35%</td></tr>
+        <tr><td>체험 프로그램 (1인)</td><td>35,000원</td><td>—</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>유통 채널</h3>
+      <table>
+        <tr><th>채널</th><th>역할</th></tr>
+        <tr><td><b>현장</b> 호두마을 매장·체험장, 광덕사 인근</td><td>이야기 체험, 첫 구매</td></tr>
+        <tr><td><b>관광지</b> 독립기념관·천안삼거리 등 기념품점, 고속도로 휴게소</td><td>기념품 노출</td></tr>
+        <tr><td><b>고향사랑기부제 답례품</b></td><td>전국 단위 인지도</td></tr>
+        <tr><td><b>온라인</b> 스마트스토어·자사몰, 정기배송</td><td>재구매</td></tr>
+        <tr><td><b>B2B</b> 지역 기업·호텔 어메니티·명절선물</td><td>대량 매출</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-bottom:5mm">
+    <div class="card">
+      <h3>꼭 거쳐야 할 인허가 · 인증</h3>
+      <ul class="dot" style="font-size:9pt">
+        <li><b>화장품으로 관리</b>: 2020년부터 세안·바디용 고체 비누는 화장품 → 화장품 <b>제조업</b>(또는 위탁제조) + <b>책임판매업</b> 등록</li>
+        <li><b>품질 기준</b>: 화장비누 유리알칼리 기준 등 안전기준 시험</li>
+        <li><b>'올가닉·유기농' 표기</b>: 식약처 지정 인증기관의 유기농화장품 인증 후에만 사용 (유기농 원료 함량 기준 충족)</li>
+        <li><b>알레르기 표시</b>: 호두는 견과류 → 포장 전면 주의 문구</li>
+        <li><b>상표</b>: '광덕 1290' 및 로고 선행조사 후 출원</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>위험 요소와 대응</h3>
+      <table style="font-size:8.6pt">
+        <tr><th>위험</th><th>대응</th></tr>
+        <tr><td>호두 오일 산패</td><td>배합 12% 이내, 산화방지, 소량 다회 생산</td></tr>
+        <tr><td>지역 호두 수급·단가</td><td>농가 연간 계약, 등급 외 호두를 오일용으로</td></tr>
+        <tr><td>견과 알레르기</td><td>표시 강화, 무호두 '숲' 버전 검토</td></tr>
+        <tr><td>인증 지연</td><td>인증 전에는 '천연 유래' 등 허용 표현만 사용</td></tr>
+        <tr><td>고가 저항</td><td>미니 굿즈로 입문가 확보</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>6개월 실행 로드맵</h3>
+  <div class="road" style="margin-bottom:3.5mm">
+    <div><b>1~2개월 · 준비</b>농가 계약, 호두 오일 착유처 확보, 위탁제조사 선정, 브랜드·상표 조사</div>
+    <div><b>2~3개월 · 시제품</b>처방 3종 시제품, 숙성·안정성·사용감 테스트, 패키지 디자인</div>
+    <div><b>4~5개월 · 등록</b>책임판매업 등록, 품질시험, 유기농 인증 신청, 답례품 공급업체 신청</div>
+    <div><b>6개월 · 출시</b>호두마을 현장 출시, 체험 프로그램 시범 운영, 온라인 오픈</div>
+  </div>
+
+  <div class="card dark" style="display:flex;gap:6mm;align-items:center">
+    <div style="flex:none;text-align:center">
+      <div class="num" style="font-size:30pt;line-height:1;color:#d9b871">1290</div>
+      <div class="note" style="color:#cdb894">한국 호두의 시작</div>
+    </div>
+    <div style="font-size:9.6pt">
+      <h3 style="margin-bottom:1mm">제안 요약</h3>
+      천안은 이미 '호두'로 알려진 도시입니다. 광덕 1290은 그 호두가 <b>처음 심어진 마을</b>의 이야기를, 먹고 사라지는 과자가 아닌 <b>매일 손에 쥐는 프리미엄 비누</b>로 옮깁니다. 지역 농가 원료 · 올가닉 인증 · 체험과 굿즈를 하나로 묶어, 천안을 찾는 사람에게 '여기서만 살 수 있는 선물'을 만듭니다.
+    </div>
+  </div>
+  <div class="foot"><span>※ 가격·원가·일정은 기획 단계의 가정이며, 역사 내용은 지역에 전해지는 기록을 바탕으로 함</span><span>4 / 4</span></div>
+</section>
+
+</body>
+</html>
