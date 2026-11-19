@@ -17,10 +17,13 @@ body{display:flex;justify-content:center;font-family:"Noto Sans KR","Malgun Goth
 .kicker{font-size:20px;letter-spacing:.32em;color:#a57f35;font-weight:700}
 h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:78px;margin:16px 0 8px;color:#3b2414}
 .sub{font-size:26px;color:#6f5e4f}
-.names{position:absolute;top:1060px;left:110px;right:110px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;pointer-events:none}
+.names{position:absolute;top:1030px;left:110px;right:110px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;pointer-events:none}
 .names b{display:block;font-family:"Noto Serif KR",serif;font-size:30px;font-weight:700;color:#3b2414}
-.names span{font-size:19px;color:#7d6a57;letter-spacing:.06em}
-.chips{position:absolute;bottom:92px;left:0;right:0;display:flex;justify-content:center;gap:16px;pointer-events:none}
+.names span{font-size:19px;color:#7d6a57;letter-spacing:.04em}
+.names i{display:block;font-style:normal;font-size:17px;letter-spacing:.14em;color:#a57f35;font-weight:700;margin-bottom:2px}
+.scale{position:absolute;top:1178px;left:190px;right:190px;display:flex;align-items:center;gap:14px;font-size:17px;color:#7d6a57;pointer-events:none}
+.scale .bar{flex:1;height:12px;border-radius:8px;background:linear-gradient(90deg,#f0e2c6,#d1a573 50%,#9a6438)}
+.chips{position:absolute;bottom:78px;left:0;right:0;display:flex;justify-content:center;gap:16px;pointer-events:none}
 .chips span{border:1.5px solid rgba(165,127,53,.55);color:#5a3a22;padding:12px 26px;border-radius:40px;font-size:21px;background:rgba(255,250,242,.5)}
 .foot{position:absolute;bottom:34px;left:0;right:0;text-align:center;font-size:16px;color:#9a8670;letter-spacing:.04em;pointer-events:none}
 </style>
@@ -36,15 +39,16 @@ h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:78px;margin:16px 
   <canvas id="gl"></canvas>
   <div class="head">
     <div class="kicker">GWANGDEOK 1290 · GOODS</div>
-    <h1>호두알 미니 비누</h1>
-    <p class="sub">진짜 호두를 닮은 25g 고체 비누 3알</p>
+    <h1>호두 오일 함량 3단계</h1>
+    <p class="sub">호두 오일이 많을수록 색이 진해지는 호두 모양 고체 비누</p>
   </div>
   <div class="names">
-    <div><b>오리진</b><span>호두 오일 · 껍질 분말</span></div>
-    <div><b>성환 배</b><span>호두 오일 · 배</span></div>
-    <div><b>광덕산 숲</b><span>호두 잎 · 쑥</span></div>
+    <div><i>WALNUT OIL 6%</i><b>라이트</b><span>가볍고 순한 세안용</span></div>
+    <div><i>WALNUT OIL 9%</i><b>베이직</b><span>얼굴·바디 겸용 대표</span></div>
+    <div><i>WALNUT OIL 12%</i><b>리치</b><span>촉촉한 바디용</span></div>
   </div>
-  <div class="chips"><span>광덕 호두 오일</span><span>저온법 6주 숙성</span><span>실제 호두 크기</span></div>
+  <div class="scale"><span>호두 오일 6%</span><div class="bar"></div><span>12%</span></div>
+  <div class="chips"><span>광덕 호두 오일</span><span>함량은 색으로</span><span>호두 모양 고체 비누</span></div>
   <div class="foot">25g × 3 · 3D 디자인 시안이며 실제 제품과 다를 수 있습니다</div>
 </div>
 
@@ -76,7 +80,7 @@ function noise(x, y, z) {
 const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 
 /* ---------- 호두 형태 만들기 ---------- */
-function makeWalnut(seed, base, groove, flecks) {
+function makeWalnut(seed, base, groove, flecks, fth = 0.42) {
   const geo = new THREE.SphereGeometry(1, 400, 300);
   const pos = geo.attributes.position, n = pos.count;
   const col = new Float32Array(n * 3);
@@ -103,25 +107,27 @@ function makeWalnut(seed, base, groove, flecks) {
     const g = Math.pow(1 - smooth(0.0, 0.2, Math.abs(w)), 1.4);          // 1 = 주름 골
     const nearSeam = smooth(0.06, 0.16, ax);                // 이음선 근처는 매끈하게
     const tipFade = 1 - 0.6 * tip;
-    const wr = -0.075 * g * nearSeam * tipFade;
-    const bump = 0.022 * noise(nx * 9 + o, ny * 9, nz * 9) * nearSeam + 0.025 * nearSeam * (0.4 + 0.6 * smooth(-0.15, 0.15, w)) * tipFade;
+    const wr = -0.062 * g * nearSeam * tipFade;
+    const bump = 0.004 * noise(nx * 5 + o, ny * 5, nz * 5) * nearSeam + 0.022 * nearSeam * (0.4 + 0.6 * smooth(-0.15, 0.15, w)) * tipFade;
     const d = ridge + seamGroove + wr + bump;
     pos.setXYZ(i, x + nx * d, y + ny * d, z + nz * d);
 
     // 색: 주름 골은 어둡게, 능선은 밝게
     const shade = Math.min(1, g * nearSeam * 1.1 + Math.max(0, -seamGroove) * 12);
-    c.copy(cBase).lerp(cGroove, shade * 0.75);
+    c.copy(cBase).lerp(cGroove, shade * 0.5);
     if (ridge > 0.02) c.offsetHSL(0, -0.02, 0.06 * (ridge / 0.036));
     // 점무늬 (오리진: 호두 껍질 분말)
-    if (flecks) { const f = noise(nx * 38 + o, ny * 38, nz * 38); if (f > 0.42) c.lerp(cFleck, Math.min(1, (f - 0.42) * 6)); }
+    if (flecks) { const f = noise(nx * 38 + o, ny * 38, nz * 38); if (f > fth) c.lerp(cFleck, Math.min(1, (f - fth) * 6)); }
     col.set([c.r, c.g, c.b], i * 3);
   }
   geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
   geo.computeVertexNormals();
   const mat = new THREE.MeshPhysicalMaterial({
-    vertexColors: true, roughness: 0.5, metalness: 0,
-    clearcoat: 0.35, clearcoatRoughness: 0.45, sheen: 0.4, sheenRoughness: 0.6,
-    sheenColor: new THREE.Color(base).offsetHSL(0, 0, 0.2)
+    // 비누: 매끈한 몰드 표면 + 왁스 같은 광택 + 살짝 비치는 반투명감
+    vertexColors: true, roughness: 0.3, metalness: 0,
+    clearcoat: 0.75, clearcoatRoughness: 0.18,
+    transmission: 0.12, thickness: 1.2, ior: 1.45,
+    attenuationColor: new THREE.Color(base), attenuationDistance: 1.5
   });
   const mesh = new THREE.Mesh(geo, mat);
   mesh.castShadow = true; mesh.receiveShadow = true;
@@ -159,13 +165,14 @@ const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowM
 ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 
 const nuts = [
-  { x: -1.3, z: 0.6, seed: 1, base: "#a8703f", groove: "#4a2c16", flecks: "#3e2410", rot: [0.0, 0.35, 0.12] },
-  { x: 0.0,   z: -0.95, seed: 2, base: "#ead7a8", groove: "#a4824a", flecks: null,   rot: [-0.25, -0.5, -0.05] },
-  { x: 1.3,  z: 0.55, seed: 3, base: "#577a5a", groove: "#20362a", flecks: null,   rot: [0.1, 0.9, -0.15] }
+  // 라이트(호두 오일 6%) → 베이직(9%) → 리치(12%): 함량이 오를수록 진한 색
+  { x: -1.3, z: 0.6,   seed: 1, base: "#efdfc0", groove: "#c4a57a", flecks: null, rot: [0.0, 0.35, 0.12] },
+  { x: 0.0,  z: -0.95, seed: 2, base: "#d0a26e", groove: "#93683d", flecks: null, rot: [-0.25, -0.5, -0.05] },
+  { x: 1.3,  z: 0.55,  seed: 3, base: "#9a6438", groove: "#5a3519", flecks: null, rot: [0.1, 0.9, -0.15] }
 ];
 const group = new THREE.Group(); scene.add(group);
 for (const o of nuts) {
-  const m = makeWalnut(o.seed, o.base, o.groove, o.flecks);
+  const m = makeWalnut(o.seed, o.base, o.groove, o.flecks, o.fth);
   m.rotation.set(...o.rot);
   m.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(m);

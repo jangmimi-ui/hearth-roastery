@@ -64,7 +64,7 @@ tr:nth-child(even) td{background:#fbf5ea}
 .sku p{font-size:9pt}
 .bar{height:3mm;border-radius:2mm;background:var(--line);overflow:hidden;margin-top:1mm}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--walnut),var(--shell))}
-.formula td:last-child{text-align:right;white-space:nowrap}
+.formula td:not(:first-child),.formula th:not(:first-child){text-align:right;white-space:nowrap}
 
 /* timeline */
 .road{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
@@ -145,55 +145,55 @@ tr:nth-child(even) td{background:#fbf5ea}
 <!-- ============ PAGE 2 : PRODUCT ============ -->
 <section class="page">
   <div class="kicker">02 · 제품 라인업 & 처방</div>
-  <h2>호두 한 알을 통째로 쓰는 비누</h2>
-  <p class="lead">호두의 <b>기름(속살)</b>, <b>껍질</b>, <b>잎</b>을 각각 다른 역할로 나누어 쓰고, 천안의 다른 특산물과 짝지어 지역성을 넓힙니다.</p>
+  <h2>호두 오일 함량 3단계, 색으로 고르는 비누</h2>
+  <p class="lead">말차 아이스크림이 농도를 색으로 보여주듯, <b>호두 오일 함량</b>을 <b>라이트 6% · 베이직 9% · 리치 12%</b>로 나눠 <b>아이보리 → 웜 브라운</b>의 비누 색으로 구분합니다. 합성 색소 없이 호두 원료로만 색을 냅니다.</p>
 
   <div style="display:grid;grid-template-columns:92mm 1fr;gap:4mm;margin-bottom:4mm;align-items:stretch">
     <figure style="position:relative;border-radius:3mm;overflow:hidden;background:#ece1cb;margin:0;border:1px solid var(--line)">
       <div style="width:100%;height:43mm;overflow:hidden;position:relative">
-        <img src="walnut-3d-feed.png" alt="입체 호두알 미니 비누 3알 3D 시안" style="position:absolute;width:80%;left:10%;top:-28.6mm;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+        <img src="walnut-3d-feed.png" alt="호두 오일 함량 3단계 호두 모양 비누 3D 시안" style="position:absolute;width:80%;left:10%;top:-28.6mm;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
       </div>
-      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:1.2mm 3mm;font-size:7.5pt;color:#f1e2c4;background:linear-gradient(transparent,rgba(43,26,15,.8))">호두알 미니 비누 3D 시안 · 오리진 / 성환 배 / 광덕산 숲</figcaption>
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:1.2mm 3mm;font-size:7.5pt;color:#f1e2c4;background:linear-gradient(transparent,rgba(43,26,15,.8))">호두 모양 비누 3D 시안 · 라이트 6% / 베이직 9% / 리치 12%</figcaption>
     </figure>
     <div class="card" style="padding:3mm 4mm;display:flex;flex-direction:column;justify-content:space-between;font-size:8.8pt;line-height:1.45">
-      <p><b style="color:var(--walnut)">호두 오일</b> · 리놀레산이 풍부해 거품이 부드럽고 촉촉함. 산패가 빨라 <b>10~12%</b> 이내 + 로즈마리 추출물로 산화 방지.</p>
-      <p><b style="color:var(--walnut)">호두 껍질 분말</b> · <b>1~2%</b> 넣어 부드러운 각질 정리감, 단면의 갈색 점무늬로 '호두'가 보이게 함.</p>
-      <p><b style="color:var(--walnut)">호두 잎 우림액</b> · 광덕 숲의 녹색을 담는 원료. 수급·안전성 확인 뒤 <b>시즌 한정</b> 적용.</p>
+      <p><b style="color:var(--walnut)">호두 오일 (단계 기준)</b> · 리놀레산이 풍부해 거품이 부드럽고 촉촉함. 단계별 <b>6 · 9 · 12%</b>, 로즈마리 추출물로 산화 방지.</p>
+      <p><b style="color:var(--walnut)">호두 껍질 추출물</b> · 단계별 <b>0.2 · 0.5 · 1.0%</b>. 점무늬 없이 비누 전체를 고르게 물들여 함량 차이를 색으로 보여줌.</p>
+      <p><b style="color:var(--walnut)">매끈한 몰드 마감</b> · 실제 호두를 본뜬 실리콘 몰드로 주름·이음선을 살리고, 표면은 매끈하게 다듬어 비누다운 광택을 냄.</p>
     </div>
   </div>
 
-  <h3>시그니처 라인업 (3종 + 굿즈 1종)</h3>
+  <h3>시그니처 라인업 (호두 오일 함량 3단계 + 굿즈)</h3>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:5mm">
     <div class="sku">
-      <svg viewBox="0 0 120 88"><rect x="8" y="14" width="104" height="62" rx="12" fill="#a9774a"/><rect x="8" y="14" width="104" height="62" rx="12" fill="none" stroke="#5a3a22" stroke-width="2"/><g fill="#5a3a22" opacity=".5"><circle cx="30" cy="35" r="2"/><circle cx="52" cy="58" r="1.6"/><circle cx="80" cy="30" r="1.8"/><circle cx="95" cy="60" r="2"/><circle cx="66" cy="44" r="1.4"/></g><text x="60" y="51" text-anchor="middle" font-size="11" font-family="serif" font-weight="700" fill="#fff6e6">1290</text></svg>
-      <div><span class="en">SIGNATURE · ORIGIN</span><h3>광덕 1290 오리진</h3><p>호두 오일 + 호두 껍질 분말. 브랜드 대표 상품, 얼굴·바디 겸용. 무향 또는 은은한 우디향.</p><span class="tag">대표</span><span class="tag">100g</span><span class="tag">스크럽감 중</span></div>
+      <svg viewBox="0 0 120 88"><ellipse cx="60" cy="44" rx="30" ry="36" fill="#efdfc0" stroke="#c4a57a" stroke-width="2"/><path d="M60 8 C56 30 64 58 60 80" stroke="#c4a57a" stroke-width="2.4" fill="none"/><path d="M50 18 C40 26 46 36 38 44 C46 52 40 62 50 70 M70 18 C80 26 74 36 82 44 C74 52 80 62 70 70" stroke="#c4a57a" stroke-opacity=".55" stroke-width="1.6" fill="none"/><g fill="#c4a57a" opacity=".6"><circle cx="48" cy="34" r="1.6"/></g></svg>
+      <div><span class="en">LIGHT · WALNUT OIL 6%</span><h3>라이트</h3><div class="bar" style="margin:1mm 0 1.2mm"><i style="width:33%"></i></div><p>아이보리. 호두 오일 6%로 가볍고 산뜻한 세안용. 처음 쓰는 분께 권장.</p><span class="tag">세안</span><span class="tag">100g</span><span class="tag">산뜻함</span></div>
     </div>
     <div class="sku">
-      <svg viewBox="0 0 120 88"><rect x="8" y="14" width="104" height="62" rx="12" fill="#efe3c6"/><rect x="8" y="14" width="104" height="62" rx="12" fill="none" stroke="#b8903f" stroke-width="2"/><path d="M8 52 C40 42 70 62 112 48 L112 64 C112 71 106 76 100 76 L20 76 C14 76 8 71 8 64Z" fill="#d9c08a"/><text x="60" y="40" text-anchor="middle" font-size="10" font-family="serif" font-weight="700" fill="#5a3a22">PEAR</text></svg>
-      <div><span class="en">CHEONAN DUO · PEAR</span><h3>호두 × 성환 배</h3><p>호두 오일 + 천안 성환 배 과즙(또는 추출물). 산뜻하고 순한 세안용. 천안 특산 2종을 한 비누에.</p><span class="tag">세안</span><span class="tag">100g</span><span class="tag">순함</span></div>
+      <svg viewBox="0 0 120 88"><ellipse cx="60" cy="44" rx="30" ry="36" fill="#d0a26e" stroke="#93683d" stroke-width="2"/><path d="M60 8 C56 30 64 58 60 80" stroke="#93683d" stroke-width="2.4" fill="none"/><path d="M50 18 C40 26 46 36 38 44 C46 52 40 62 50 70 M70 18 C80 26 74 36 82 44 C74 52 80 62 70 70" stroke="#93683d" stroke-opacity=".55" stroke-width="1.6" fill="none"/><g fill="#93683d" opacity=".6"><circle cx="48" cy="34" r="1.6"/><circle cx="70" cy="52" r="1.6"/><circle cx="54" cy="60" r="1.6"/></g></svg>
+      <div><span class="en">BASIC · WALNUT OIL 9%</span><h3>베이직</h3><div class="bar" style="margin:1mm 0 1.2mm"><i style="width:66%"></i></div><p>카라멜 밀크색. 호두 오일 9%의 브랜드 대표 상품, 얼굴·바디 겸용. 부드러운 거품.</p><span class="tag">대표</span><span class="tag">100g</span><span class="tag">균형감</span></div>
     </div>
     <div class="sku">
-      <svg viewBox="0 0 120 88"><rect x="8" y="14" width="104" height="62" rx="12" fill="#3f5c45"/><rect x="8" y="14" width="104" height="62" rx="12" fill="none" stroke="#2f4a35" stroke-width="2"/><path d="M40 60 C45 35 75 28 85 30 C80 50 62 62 40 60Z" fill="#8fa58a"/><path d="M40 60 L85 30" stroke="#2f4a35" stroke-width="1.5"/></svg>
-      <div><span class="en">FOREST · LIMITED</span><h3>광덕산 숲</h3><p>호두 잎 우림액 + 쑥 또는 녹차 분말. 짙은 녹색의 계절 한정판, 바디·남성 선물용.</p><span class="tag">한정</span><span class="tag">100g</span><span class="tag">상쾌함</span></div>
+      <svg viewBox="0 0 120 88"><ellipse cx="60" cy="44" rx="30" ry="36" fill="#9a6438" stroke="#5a3519" stroke-width="2"/><path d="M60 8 C56 30 64 58 60 80" stroke="#5a3519" stroke-width="2.4" fill="none"/><path d="M50 18 C40 26 46 36 38 44 C46 52 40 62 50 70 M70 18 C80 26 74 36 82 44 C74 52 80 62 70 70" stroke="#5a3519" stroke-opacity=".55" stroke-width="1.6" fill="none"/><g fill="#5a3519" opacity=".6"><circle cx="48" cy="34" r="1.6"/><circle cx="70" cy="52" r="1.6"/><circle cx="54" cy="60" r="1.6"/><circle cx="74" cy="30" r="1.6"/><circle cx="44" cy="50" r="1.6"/><circle cx="66" cy="40" r="1.6"/></g></svg>
+      <div><span class="en">RICH · WALNUT OIL 12%</span><h3>리치</h3><div class="bar" style="margin:1mm 0 1.2mm"><i style="width:100%"></i></div><p>웜 브라운. 호두 오일 12%로 가장 촉촉한 바디용. 건조한 계절 추천.</p><span class="tag">바디</span><span class="tag">100g</span><span class="tag">촉촉함</span></div>
     </div>
     <div class="sku">
-      <svg viewBox="0 0 120 88"><g fill="#a9774a" stroke="#5a3a22" stroke-width="1.5"><ellipse cx="32" cy="48" rx="18" ry="21"/><ellipse cx="60" cy="44" rx="18" ry="21"/><ellipse cx="88" cy="48" rx="18" ry="21"/></g><g stroke="#3b2414" stroke-width="1.6" fill="none"><path d="M32 27 V69"/><path d="M60 23 V65"/><path d="M88 27 V69"/></g></svg>
-      <div><span class="en">GOODS · MINI</span><h3>호두알 미니 비누 (굿즈)</h3><p>실제 호두 크기·모양의 25g 미니 비누 3알. 호두과자 상자처럼 생긴 종이 상자에 담는 여행 기념품·답례품.</p><span class="tag">굿즈</span><span class="tag">25g×3</span><span class="tag">입문가</span></div>
+      <svg viewBox="0 0 120 88"><g stroke-width="1.5"><ellipse cx="32" cy="48" rx="18" ry="21" fill="#efdfc0" stroke="#c4a57a"/><ellipse cx="60" cy="44" rx="18" ry="21" fill="#d0a26e" stroke="#93683d"/><ellipse cx="88" cy="48" rx="18" ry="21" fill="#9a6438" stroke="#5a3519"/></g><g stroke-width="1.6" fill="none"><path d="M32 27 V69" stroke="#c4a57a"/><path d="M60 23 V65" stroke="#93683d"/><path d="M88 27 V69" stroke="#5a3519"/></g></svg>
+      <div><span class="en">GOODS · MINI</span><h3>호두알 미니 비누 (굿즈)</h3><p>실제 호두 크기·모양의 25g 비누를 <b>라이트·베이직·리치 한 알씩</b>. 함량별 사용감을 비교해 보는 여행 기념품·답례품.</p><span class="tag">굿즈</span><span class="tag">25g×3</span><span class="tag">입문가</span></div>
     </div>
   </div>
 
   <div class="grid2">
     <div>
-      <h3>기본 처방 예시 · 오리진 (오일 100 기준)</h3>
+      <h3>단계별 처방 예시 (오일 100 기준)</h3>
       <table class="formula">
-        <tr><th>원료</th><th>비율</th></tr>
-        <tr><td>유기농 올리브 오일</td><td>38%</td></tr>
-        <tr><td>유기농 코코넛 오일</td><td>22%</td></tr>
-        <tr><td>유기농 시어버터</td><td>15%</td></tr>
-        <tr><td><b>광덕 호두 오일</b> (냉압착)</td><td><b>12%</b></td></tr>
-        <tr><td>쌀겨 오일</td><td>8%</td></tr>
-        <tr><td>피마자 오일</td><td>5%</td></tr>
-        <tr><td colspan="2" class="note">+ 호두 껍질 분말 1.5% · 로즈마리 추출물 0.1% · 과지방 6% · 팜유 미사용</td></tr>
+        <tr><th>원료</th><th>라이트</th><th>베이직</th><th>리치</th></tr>
+        <tr><td>유기농 올리브 오일</td><td>44%</td><td>41%</td><td>38%</td></tr>
+        <tr><td>유기농 코코넛 오일</td><td>22%</td><td>22%</td><td>22%</td></tr>
+        <tr><td>유기농 시어버터</td><td>15%</td><td>15%</td><td>15%</td></tr>
+        <tr><td><b>광덕 호두 오일</b> (냉압착)</td><td><b>6%</b></td><td><b>9%</b></td><td><b>12%</b></td></tr>
+        <tr><td>쌀겨 · 피마자 오일</td><td>13%</td><td>13%</td><td>13%</td></tr>
+        <tr><td>+ 호두 껍질 추출물</td><td>0.2%</td><td>0.5%</td><td>1.0%</td></tr>
+                <tr><td colspan="4" class="note">공통: 로즈마리 추출물 0.1% · 과지방 6% · 팜유·색소 미사용</td></tr>
       </table>
     </div>
     <div>
@@ -242,9 +242,9 @@ tr:nth-child(even) td{background:#fbf5ea}
       <h3>선물세트 구성</h3>
       <table style="font-size:8.8pt;color:var(--ink)">
         <tr><th style="background:#b8903f;color:#2a1f17">세트</th><th style="background:#b8903f;color:#2a1f17">구성</th></tr>
-        <tr><td style="background:#fff">광덕 기념</td><td style="background:#fff">호두알 미니 3알</td></tr>
-        <tr><td style="background:#fbf5ea">천안 듀오</td><td style="background:#fbf5ea">오리진 + 호두×성환 배</td></tr>
-        <tr><td style="background:#fff">1290 시그니처</td><td style="background:#fff">3종 + 나무 비누받침 (호두나무 전정목 활용)</td></tr>
+        <tr><td style="background:#fff">광덕 기념</td><td style="background:#fff">호두 모양 미니 3알 (라이트·베이직·리치)</td></tr>
+        <tr><td style="background:#fbf5ea">나의 함량</td><td style="background:#fbf5ea">좋아하는 단계 100g 2개</td></tr>
+        <tr><td style="background:#fff">1290 시그니처</td><td style="background:#fff">라이트·베이직·리치 100g + 나무 비누받침 (호두나무 전정목 활용)</td></tr>
         <tr><td style="background:#fbf5ea">명절 기업선물</td><td style="background:#fbf5ea">시그니처 + 천안 호두 원물 소포장</td></tr>
       </table>
     </div>
@@ -286,7 +286,7 @@ tr:nth-child(even) td{background:#fbf5ea}
         <span style="flex:1;height:9mm;border-radius:2mm;background:#2f4a35"></span>
         <span style="flex:1;height:9mm;border-radius:2mm;background:#b8903f"></span>
       </div>
-      <p class="note">호두 껍질 · 호두 속살 · 크림 · 광덕산 숲 · 금빛 포인트. 세리프 서체로 '오래된 이야기'의 품격.</p>
+      <p class="note">진한 호두 · 호두 속살 · 크림 · 광덕산 녹색 · 금빛 포인트. 제품 색은 라이트→리치 함량 그러데이션. 세리프 서체로 '오래된 이야기'의 품격.</p>
     </div>
   </div>
   <div class="foot"><span>광덕 1290 · 천안 호두마을 프리미엄 비누 제안서</span><span>3 / 4</span></div>
@@ -303,10 +303,10 @@ tr:nth-child(even) td{background:#fbf5ea}
       <h3>가격안 <span class="note">(가정 · 시장조사 후 확정)</span></h3>
       <table>
         <tr><th>상품</th><th>판매가</th><th>목표 원가율</th></tr>
-        <tr><td>오리진 / 성환 배 100g</td><td>22,000원</td><td>25~30%</td></tr>
-        <tr><td>광덕산 숲 한정 100g</td><td>25,000원</td><td>25~30%</td></tr>
+        <tr><td>라이트 · 베이직 100g</td><td>22,000원</td><td>25~30%</td></tr>
+        <tr><td>리치 100g</td><td>24,000원</td><td>25~30%</td></tr>
         <tr><td>호두알 미니 25g×3</td><td>15,000원</td><td>30%</td></tr>
-        <tr><td>천안 듀오 세트</td><td>45,000원</td><td>30%</td></tr>
+        <tr><td>나의 함량 세트 (같은 단계 2개)</td><td>42,000원</td><td>30%</td></tr>
         <tr><td>1290 시그니처 세트</td><td>78,000원</td><td>30~35%</td></tr>
         <tr><td>체험 프로그램 (1인)</td><td>35,000원</td><td>—</td></tr>
       </table>
@@ -341,7 +341,7 @@ tr:nth-child(even) td{background:#fbf5ea}
         <tr><th>위험</th><th>대응</th></tr>
         <tr><td>호두 오일 산패</td><td>배합 12% 이내, 산화방지, 소량 다회 생산</td></tr>
         <tr><td>지역 호두 수급·단가</td><td>농가 연간 계약, 등급 외 호두를 오일용으로</td></tr>
-        <tr><td>견과 알레르기</td><td>표시 강화, 무호두 '숲' 버전 검토</td></tr>
+        <tr><td>견과 알레르기</td><td>표시 강화, 구매 전 안내·견본 제공</td></tr>
         <tr><td>인증 지연</td><td>인증 전에는 '천연 유래' 등 허용 표현만 사용</td></tr>
         <tr><td>고가 저항</td><td>미니 굿즈로 입문가 확보</td></tr>
       </table>
