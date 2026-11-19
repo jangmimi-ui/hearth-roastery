@@ -40,6 +40,12 @@
 ## 변경 3 (2026-11-19) · 제안사 표기
 - 오른쪽 위에 "PROPOSED BY LNM SOLUTION"(한글판 "제안 · LNM Solution"), 하단 출처 줄 끝에도 LNM Solution 표기 후 2종 다시 렌더링
 
+## 변경 4 (2026-11-19) · LNM Solution을 맨 아래로
+- 사용자 요청: 포스터 **맨 아래**에 LNM Solution을 넣어 다시 만들기
+- 오른쪽 위의 작은 표기와 출처 줄 끝의 표기를 빼고, 출처 줄 아래 **맨 아래 한 줄**에 금색으로 크게: 영어판 "PROPOSED BY LNM SOLUTION", 한글판 "제안 · LNM Solution"
+- 버튼·출처 줄과 단계 이름·함량 막대를 조금 위로 올려 간격 확보(버튼이 막대와 겹쳐 조정), 2종 다시 렌더링
+- 포스터가 들어간 사업설명회 자료(`business-briefing.pdf`)도 다시 만듦
+
 ## 산출물
 - `walnut-soap/walnut-3d-cheonan.html`: 원본
 - `walnut-soap/walnut-3d-cheonan-en.png`: 영어판 (1080×1350)
