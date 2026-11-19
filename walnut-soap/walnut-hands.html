@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>손에 담긴 호두 비누</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#1e2a1c}
+.canvas{width:1600px;height:748px;position:relative;overflow:hidden;
+  background:radial-gradient(70% 90% at 50% 55%,#5f7f45 0%,#3d5a31 45%,#22341d 100%)}
+.bokeh{position:absolute;inset:0;filter:blur(10px)}
+#gl{position:absolute;inset:0;width:1600px;height:748px;display:block}
+</style>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+<div class="canvas">
+  <!-- 호두나무 잎 배경 (흐리게) -->
+  <svg class="bokeh" viewBox="0 0 1600 748" preserveAspectRatio="none">
+    <g id="leaves"></g>
+  </svg>
+  <canvas id="gl"></canvas>
+</div>
+<script>
+// 잎과 빛망울
+(function(){
+  let s=7; const r=()=>(s=(s*16807)%2147483647)/2147483647;
+  let h='';
+  for(let i=0;i<34;i++){
+    const x=r()*1600,y=r()*748,len=120+r()*170,w=len*0.38,a=r()*360;
+    const c=['#7fa25a','#6b8f4a','#93b866','#4f7238','#a9c97a'][Math.floor(r()*5)];
+    h+=`<g transform="translate(${x} ${y}) rotate(${a})" opacity="${(.55+r()*.4).toFixed(2)}"><path d="M0 0 C${w} ${-len*.25} ${w} ${-len*.75} 0 ${-len} C${-w} ${-len*.75} ${-w} ${-len*.25} 0 0Z" fill="${c}"/><path d="M0 0 L0 ${-len}" stroke="#d9e8b0" stroke-opacity=".5" stroke-width="3"/></g>`;
+  }
+  for(let i=0;i<26;i++){const x=r()*1600,y=r()*748,rr=6+r()*20;h+=`<circle cx="${x}" cy="${y}" r="${rr}" fill="#f4f9df" opacity="${(.25+r()*.45).toFixed(2)}"/>`;}
+  document.getElementById('leaves').innerHTML=h;
+})();
+</script>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+/* ---------- 3D 펄린 노이즈 ---------- */
+const P = new Uint8Array(512);
+{ const p = [...Array(256).keys()]; let s = 1290;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [p[i], p[j]] = [p[j], p[i]]; }
+  for (let i = 0; i < 512; i++) P[i] = p[i & 255]; }
+const fade = t => t * t * t * (t * (t * 6 - 15) + 10);
+const lerp = (a, b, t) => a + (b - a) * t;
+function grad(h, x, y, z) { const u = h < 8 ? x : y, v = h < 4 ? y : (h === 12 || h === 14 ? x : z);
+  return ((h & 1) ? -u : u) + ((h & 2) ? -v : v); }
+function noise(x, y, z) {
+  const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+  x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+  const u = fade(x), v = fade(y), w = fade(z);
+  const A = P[X] + Y, AA = P[A] + Z, AB = P[A + 1] + Z, B = P[X + 1] + Y, BA = P[B] + Z, BB = P[B + 1] + Z;
+  return lerp(lerp(lerp(grad(P[AA] & 15, x, y, z), grad(P[BA] & 15, x - 1, y, z), u),
+                   lerp(grad(P[AB] & 15, x, y - 1, z), grad(P[BB] & 15, x - 1, y - 1, z), u), v),
+              lerp(lerp(grad(P[AA + 1] & 15, x, y, z - 1), grad(P[BA + 1] & 15, x - 1, y, z - 1), u),
+                   lerp(grad(P[AB + 1] & 15, x, y - 1, z - 1), grad(P[BB + 1] & 15, x - 1, y - 1, z - 1), u), v), w);
+}
+const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+/* ---------- 호두 형태 만들기 ---------- */
+function makeWalnut(seed, base, groove, flecks, fth = 0.42) {
+  const geo = new THREE.SphereGeometry(1, 260, 200);
+  const pos = geo.attributes.position, n = pos.count;
+  const col = new Float32Array(n * 3);
+  const cBase = new THREE.Color(base), cGroove = new THREE.Color(groove), cFleck = new THREE.Color(flecks || base), c = new THREE.Color();
+  const v = new THREE.Vector3();
+  for (let i = 0; i < n; i++) {
+    v.fromBufferAttribute(pos, i);              // 단위 구 위의 점 (= 법선)
+    const nx = v.x, ny = v.y, nz = v.z;
+    // 기본 호두 비율: 세로로 길고, 이음선 방향(x)으로 살짝 넓음
+    let sx = 0.92, sy = 1.08, sz = 0.86;
+    // 아래 끝은 뾰족하게, 위는 살짝 납작하게
+    const tip = smooth(0.45, 1.0, -ny);
+    const k = 1 - 0.42 * Math.pow(tip, 1.6);
+    const top = smooth(0.7, 1.0, ny);
+    let x = nx * sx * k, y = ny * sy * (1 - 0.06 * top) - 0.04 * tip, z = nz * sz * k;
+
+    // 가운데 이음선 (x=0 평면): 솟은 능선 + 양옆 홈
+    const ax = Math.abs(nx);
+    const ridge = 0.036 * Math.exp(-Math.pow(ax / 0.034, 2));
+    const seamGroove = -0.04 * Math.exp(-Math.pow((ax - 0.075) / 0.035, 2));
+    // 깊은 주름: 세로로 길쭉한 능선형 노이즈
+    const q = 3.4, o = seed * 7.3;
+    let w = noise(nx * q + o, ny * q * 0.55, nz * q) + 0.45 * noise(nx * q * 2.1 + o, ny * q * 1.1 + 3, nz * q * 2.1);
+    const g = Math.pow(1 - smooth(0.0, 0.2, Math.abs(w)), 1.4);          // 1 = 주름 골
+    const nearSeam = smooth(0.06, 0.16, ax);                // 이음선 근처는 매끈하게
+    const tipFade = 1 - 0.6 * tip;
+    const wr = -0.062 * g * nearSeam * tipFade;
+    const bump = 0.004 * noise(nx * 5 + o, ny * 5, nz * 5) * nearSeam + 0.022 * nearSeam * (0.4 + 0.6 * smooth(-0.15, 0.15, w)) * tipFade;
+    const d = ridge + seamGroove + wr + bump;
+    pos.setXYZ(i, x + nx * d, y + ny * d, z + nz * d);
+
+    // 색: 주름 골은 어둡게, 능선은 밝게
+    const shade = Math.min(1, g * nearSeam * 1.1 + Math.max(0, -seamGroove) * 12);
+    c.copy(cBase).lerp(cGroove, shade * 0.5);
+    if (ridge > 0.02) c.offsetHSL(0, -0.02, 0.06 * (ridge / 0.036));
+    // 점무늬 (오리진: 호두 껍질 분말)
+    if (flecks) { const f = noise(nx * 38 + o, ny * 38, nz * 38); if (f > fth) c.lerp(cFleck, Math.min(1, (f - fth) * 6)); }
+    col.set([c.r, c.g, c.b], i * 3);
+  }
+  geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+  geo.computeVertexNormals();
+  const mat = new THREE.MeshPhysicalMaterial({
+    // 비누: 매끈한 몰드 표면 + 왁스 같은 광택 + 살짝 비치는 반투명감
+    vertexColors: true, roughness: 0.3, metalness: 0,
+    clearcoat: 0.75, clearcoatRoughness: 0.18,
+    transmission: 0.12, thickness: 1.2, ior: 1.45,
+    attenuationColor: new THREE.Color(base), attenuationDistance: 1.5
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.castShadow = true; mesh.receiveShadow = true;
+  return mesh;
+}
+
+/* ---------- 장면 ---------- */
+const W = 1600, H = 748;
+const canvas = document.getElementById("gl");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1.5);
+renderer.setSize(W, H, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene = new THREE.Scene();
+const pm = new THREE.PMREMGenerator(renderer);
+scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(26, W / H, 0.1, 100);
+camera.position.set(0, 12.5, 7.2);
+camera.lookAt(0, 0.4, -0.7);
+
+const key = new THREE.DirectionalLight(0xfff1dc, 2.6);
+key.position.set(-5, 10, 5); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6; key.shadow.bias = -0.0005;
+Object.assign(key.shadow.camera, { left: -7, right: 7, top: 7, bottom: -7, near: 1, far: 30 });
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xe8ffd0, 0.9); rim.position.set(6, 4, -6); scene.add(rim);
+scene.add(new THREE.HemisphereLight(0xf4ffe6, 0x6b5a40, 0.55));
+
+/* ---------- 손 ---------- */
+const skin = new THREE.MeshPhysicalMaterial({ color: 0xd99877, roughness: 0.55, sheen: 0.6, sheenColor: new THREE.Color(0xffcfb4), sheenRoughness: 0.5, clearcoat: 0.08 });
+const hand = new THREE.Group(); scene.add(hand);
+function add(geo, pos) { const m = new THREE.Mesh(geo, skin); if (pos) m.position.copy(pos); m.castShadow = m.receiveShadow = true; hand.add(m); return m; }
+// 손바닥 (살짝 오목하게)
+{
+  const g = new THREE.SphereGeometry(1, 96, 64);
+  const p = g.attributes.position; const v = new THREE.Vector3();
+  for (let i = 0; i < p.count; i++) {
+    v.fromBufferAttribute(p, i);
+    let x = v.x * 2.7, y = v.y * 0.55, z = v.z * 2.4;
+    if (v.y > 0) y -= 0.35 * (1 - (v.x * v.x + v.z * v.z));      // 가운데 오목
+    y += 0.25 * (v.x * v.x);                                     // 양옆이 살짝 올라감
+    p.setXYZ(i, x, y, z);
+  }
+  g.computeVertexNormals();
+  add(g);
+}
+// 손가락: 곡선 튜브 + 둥근 끝
+function finger(pts, r) {
+  const curve = new THREE.CatmullRomCurve3(pts.map(a => new THREE.Vector3(...a)));
+  add(new THREE.TubeGeometry(curve, 64, r, 24, false));
+  add(new THREE.SphereGeometry(r, 24, 16), curve.getPoint(1));
+  add(new THREE.SphereGeometry(r * 1.05, 24, 16), curve.getPoint(0));
+}
+finger([[-1.75, 0.25, -1.6], [-1.95, 0.6, -2.8], [-1.85, 1.45, -3.25], [-1.55, 2.05, -2.85]], 0.36);   // 검지
+finger([[-0.6, 0.25, -2.0], [-0.65, 0.7, -3.25], [-0.6, 1.65, -3.65], [-0.45, 2.35, -3.15]], 0.38);     // 중지
+finger([[0.55, 0.25, -1.95], [0.6, 0.7, -3.15], [0.6, 1.6, -3.5], [0.5, 2.25, -3.05]], 0.37);      // 약지
+finger([[1.6, 0.25, -1.55], [1.8, 0.55, -2.5], [1.75, 1.25, -2.85], [1.5, 1.8, -2.5]], 0.32);      // 새끼
+finger([[-2.3, 0.0, 0.7], [-3.15, 0.4, 0.1], [-3.3, 1.2, -0.55], [-2.8, 1.85, -0.9]], 0.42);   // 엄지
+// 손바닥 바깥쪽 두툼한 살 + 손목
+add(new THREE.SphereGeometry(1, 48, 32), new THREE.Vector3(2.1, 0.1, 0.4)).scale.set(0.75, 0.55, 1.7);
+add(new THREE.SphereGeometry(1, 48, 32), new THREE.Vector3(-1.6, 0.0, 1.2)).scale.set(1.1, 0.55, 1.1);
+{ const w = add(new THREE.CylinderGeometry(1.75, 1.95, 7, 48, 1, true), new THREE.Vector3(0, -0.9, 4.6)); w.rotation.x = Math.PI / 2 - 0.25; }
+
+/* ---------- 손 안의 호두 비누 ---------- */
+const levels = [
+  makeWalnut(1, "#efdfc0", "#c4a57a", null),   // 라이트 6%
+  makeWalnut(2, "#d0a26e", "#93683d", null),   // 베이직 9%
+  makeWalnut(3, "#9a6438", "#5a3519", null)    // 리치 12%
+];
+const S = 0.76;
+const pile = [
+  // [x, y, z, level, rx, ry, rz]
+  [-1.49, 0.62, -1.19, 0, 0.3, 0.4, 0.2], [0.06, 0.67, -1.46, 2, -0.2, 1.2, 0.1], [1.49, 0.67, -1.13, 1, 0.1, -0.6, -0.3],
+  [-1.71, 0.67, 0.38, 2, 1.3, 0.2, 0.4], [-0.17, 0.45, 0.16, 1, 0.2, 2.2, 0.0], [1.43, 0.73, 0.38, 0, -0.4, 0.9, 1.4],
+  [-0.83, 0.67, 1.57, 1, 0.5, -1.0, 0.2], [0.83, 0.67, 1.62, 2, -0.3, 0.3, -0.5],
+  [-0.83, 1.85, -0.49, 1, 1.4, 0.6, 0.1], [0.77, 1.90, -0.38, 0, 0.2, -1.4, 0.3], [0.00, 1.79, 0.81, 2, -0.6, 2.6, -0.2]
+];
+for (const [x, y, z, l, rx, ry, rz] of pile) {
+  const m = levels[l].clone();
+  m.scale.setScalar(S); m.position.set(x, y, z); m.rotation.set(rx, ry, rz);
+  scene.add(m);
+}
+renderer.render(scene, camera);
+window.__ready = true;
+</script>
+</body>
+</html>
